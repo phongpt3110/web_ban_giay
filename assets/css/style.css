@@ -1,0 +1,114 @@
+:root {
+  --primary-color: #0f3057; /* Định nghĩa biến màu chính */
+  --secondary-color: #cc041a; /* Định nghĩa biến màu phụ */
+}
+
+/* html */
+html {
+  margin: auto;
+}
+
+/* body */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* header */
+#logo a:hover {
+  opacity: 0.8;
+}
+
+/* seacrch */
+#search {
+  max-height: 50px;
+  max-width: 700px;
+}
+
+/* Tài khoản */
+#account {
+  cursor: pointer;
+}
+#account span {
+  font-size: 18px;
+  font-style: italic;
+}
+
+/* Giỏ hàng  */
+.icon {
+  font-size: 40px;
+}
+
+#cart .icon:hover {
+  color: var(--secondary-color);
+  transform: translate(-2px);
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Loại bỏ icon mặc định */
+.dropdown-toggle::after {
+  content: none;
+}
+
+/* Footer */
+.bg_primary {
+  background-color: var(--primary-color);
+}
+
+footer {
+  min-height: 320px;
+}
+
+footer ul {
+  list-style-type: none;
+}
+
+footer ul li {
+  padding-bottom: 5px;
+  font-size: larger;
+}
+
+footer ul li:hover {
+  color: var(--secondary-color);
+  transform: translate(-2px);
+}
+
+/* --------------------------------------- */
+
+/* Ảnh sản phẩm */
+#img-products {
+  background-color: #eeeee6;
+  border-radius: 10px;
+}
+
+#img-products img {
+  display: block;
+  width: 90%;
+  height: 200px;
+  filter: drop-shadow(0 10px 5px #4e4e4e99);
+  margin: auto;
+  padding: 10px 0 4px 0;
+  border-radius: 10px;
+}
+
+#img-products h6 {
+  text-align: center;
+  margin: 0;
+  padding: 4px 0;
+}
+
+#img-products .price {
+  text-align: center;
+  font-size: small;
+  padding: 4px 0;
+  color: var(--secondary-color);
+}
+
+#img-products .btn {
+  min-width: 60px;
+}
