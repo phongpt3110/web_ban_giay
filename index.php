@@ -33,7 +33,7 @@ include_once "thuvien.php";
         <div class="container d-md-flex justify-content-md-between align-content-center align-items-md-center">
             <!-- Logo -->
             <div id="logo" class="me-2 mt-2">
-                <a href="#"><img class="rounded" src="./assets/images/logo.jpg" class="img-fluid"
+                <a href="index.php"><img class="rounded" src="./assets/images/logo.jpg" class="img-fluid"
                         style="width: 100px; height: 100px;" /></a>
             </div>
             <!-- Tạo khung search -->
@@ -68,17 +68,22 @@ include_once "thuvien.php";
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="accountDropdownMenu">
                         <!-- Phương thức đăng nhập, đăng ký, đăng xuất -->
-                        <!-- Kích hoạt modal đăng ký -->
-                        <li><a class="dropdown-item" href="#">
-                                <i class="fa-solid fa-user-pen" style="color: #0f3057;"></i>
-                                Đăng ký</a>
-                        </li>
-                        <li><a class="dropdown-item" href="#">
-                                <i class="fa-solid fa-user-check" style="color: #0f3057;"></i>
-                                Đăng nhập</a></li>
-                        <li><a class="dropdown-item" href="#">
-                                <i class="fa-solid fa-user-xmark" style="color: #0f3057;"></i>
-                                Đăng xuất</a></li>
+                        <?php
+                        // Hiển thị from đăng nhập 
+                        echo '<li><a class="dropdown-item" href="index.php?do=dangky">
+                                    <i class="fa-solid fa-user-pen" style="color: #0f3057;"></i>
+                                    Đăng ký</a>
+                            </li>';
+                        // Hiển thị from đăng ký
+                        echo '<li><a class="dropdown-item" href="index.php?do=dangnhap">
+                                    <i class="fa-solid fa-user-check" style="color: #0f3057;"></i>
+                                    Đăng nhập</a></li>';
+                        // Đăng xuất thông tin
+                        echo '<li><a class="dropdown-item" href="index.php?do=dangxuat">
+                                    <i class="fa-solid fa-user-xmark" style="color: #0f3057;"></i>
+                                    Đăng xuất</a></li>';
+                        ?>
+
                     </ul>
                 </div>
 

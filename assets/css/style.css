@@ -10,7 +10,9 @@ html {
 
 /* body */
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 600;
+  background: #ececec;
   margin: 0;
   padding: 0;
 }
@@ -150,4 +152,45 @@ footer ul li:hover {
     0 0 20px rgba(255, 255, 255, 0.2);
   outline-color: var(--secondary-color);
   outline-offset: 5px;
+}
+
+/* ----------------------------------------------------------- */
+/* From đăng nhập */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+#fromRegis .box-area {
+  width: 930px;
+}
+
+#fromRegis .right-box {
+  padding: 40px 30px 40px 40px;
+}
+
+#fromRegis .forgot a {
+  color: blue;
+  text-decoration: underline;
+}
+
+#fromRegis ::placeholder {
+  font-size: 16px;
+}
+
+#fromRegis .rounded-4 {
+  border-radius: 20px;
+}
+#fromRegis .rounded-5 {
+  border-radius: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+  #fromRegis .box-area {
+    margin: 0 10px;
+  }
+  #fromRegis .left-box {
+    height: 100px;
+    overflow: hidden;
+  }
+  #fromRegis .right-box {
+    padding: 20px;
+  }
 }
