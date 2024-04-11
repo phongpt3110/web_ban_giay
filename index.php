@@ -46,11 +46,10 @@ include_once "thuvien.php";
             <!-- Tài khoản -->
             <div id="account" class="d-md-flex me-2 mt-2 align-items-center">
                 <i class="icon fa-solid fa-user-gear fa-2xl me-2"></i>
-                <!-- Đăng nhập, đăng ký -->
+                <!-- Đăng nhập, đăng ký, đăng xuất -->
                 <div class="dropdown">
                     <button type="button" class="border-0 bg_primary text-white dropdown-toggle"
                         data-bs-toggle="dropdown">
-
                         <?php
                         // Đặt mặt định là "Tài khoản"
                         $taikhoan = "Tài khoản";
@@ -69,9 +68,11 @@ include_once "thuvien.php";
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="accountDropdownMenu">
                         <!-- Phương thức đăng nhập, đăng ký, đăng xuất -->
+                        <!-- Kích hoạt modal đăng ký -->
                         <li><a class="dropdown-item" href="#">
                                 <i class="fa-solid fa-user-pen" style="color: #0f3057;"></i>
-                                Đăng ký</a></li>
+                                Đăng ký</a>
+                        </li>
                         <li><a class="dropdown-item" href="#">
                                 <i class="fa-solid fa-user-check" style="color: #0f3057;"></i>
                                 Đăng nhập</a></li>
