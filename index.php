@@ -222,11 +222,30 @@ include_once "thuvien.php";
                                 </a>
                             </li>';
                 }
+                // Nếu là khách hàng
+                if ($_SESSION['QuyenHan'] == 2) {
+                    echo '<li class="nav-item">
+                                <a class="nav-link" href="index.php?do=dssanpham_khachhang&id=' . $_SESSION['MaNguoiDung'] . '">
+                                    <span>
+                                        <i class="icon-nav fa-solid fa-eye"></i>
+                                        SẢN PHẨM
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?do=giohang_xem&id=' . $_SESSION['MaNguoiDung'] . '">
+                                    <span>
+                                        <i class="icon-nav fa-solid fa-cart-shopping"></i>
+                                        GIỎ HÀNG
+                                    </span>
+                                </a>
+                            </li>';
+                }
                 echo '</ul>';
                 echo '</div>';
+
                 // Nếu quyền hạn là admin, nhân viên, khach hang
-                if ($_SESSION['QuyenHan'] == 0 || $_SESSION['QuyenHan'] == 1 || $_SESSION['QuyenHan'] == 2) {
-                    echo '
+                echo '
                     <div class=" mt-3 col-md-3 ">
                             <ul class="nav flex-column  nav-list">
                                 <h4 class=" bg_primary text-white p-2 m-0">CÁ NHÂN</h4>
@@ -248,7 +267,6 @@ include_once "thuvien.php";
                                 </li>
                             </ul>
                         </div>';
-                }
                 echo '</nav>';
                 echo '</div>';
 

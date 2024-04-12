@@ -34,9 +34,9 @@
                 }
                 echo '      </div>';
                 echo '      <div class="d-flex justify-content-around pb-3">';
-                echo '          <a class="btn btn-outline-success btn-sm me-2" 
-                                href="index.php?do=dangnhap" 
-                                onclick="return confirm(\"Vui lòng đăng nhập để mua sản phẩm ' . $ds["TenSP"] . ' này\")">Buy</a>';
+                echo "          <a title='mua hàng' class='btn btn-outline-success btn-sm me-2'
+                                href='index.php?do=dangnhap'
+                                onclick='return confirm(\"Vui lòng đăng nhập để mua sản phẩm " . $ds["TenSP"] . " này\")'>Buy</a>";
                 echo '          <a class="btn btn-outline-warning btn-sm">Add cart</a>';
                 echo '      </div>';
                 echo '  </div>';

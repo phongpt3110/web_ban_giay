@@ -219,7 +219,7 @@ footer ul li:hover {
     margin: 0 10px;
   }
   #fromRegis .left-box {
-    height: 100px;
+    height: auto;
     overflow: hidden;
   }
   #fromRegis .right-box {
