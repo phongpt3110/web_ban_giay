@@ -53,7 +53,6 @@ include_once "thuvien.php";
                         <?php
                         // Đặt mặt định là "Tài khoản"
                         $taikhoan = "Tài khoản";
-                        echo $taikhoan;
                         if (isset($_SESSION["QuyenHan"]) && $_SESSION["HoTen"]) {
                             // Nếu admin or khách hàng hiện tên
                             if ($_SESSION['QuyenHan'] == 0) {
@@ -66,8 +65,10 @@ include_once "thuvien.php";
                         }
                         ?>
                     </button>
+
+
+                    <!-- Phương thức đăng nhập, đăng ký, đăng xuất -->
                     <ul class="dropdown-menu" aria-labelledby="accountDropdownMenu">
-                        <!-- Phương thức đăng nhập, đăng ký, đăng xuất -->
                         <?php
                         // Hiển thị from đăng nhập 
                         echo '<li><a class="dropdown-item" href="index.php?do=dangky">
@@ -87,7 +88,6 @@ include_once "thuvien.php";
                     </ul>
                 </div>
 
-
             </div>
             <!-- Giỏ hàng -->
             <div id="cart" class="me-2 mt-2">
@@ -101,22 +101,170 @@ include_once "thuvien.php";
     <!-- Phần giữa trang -->
     <div class="container mt-5">
         <div class="row">
-            <!-- Cột trái -->
-            <div class="col-md-3">
-                <h1> Nav bên trái </h1>
-            </div>
+            <nav class="d-block">
+                <div class=" mt-3 col-md-3 ">
+                    <ul class="nav flex-column  nav-list ">
+                        <h4 class=" bg_primary text-white p-2 m-0">QUẢN LÝ</h4>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?do=sanpham_them">
+                                <span>
+                                    <i class="icon-nav fa-solid fa-plus"></i>
+                                    THÊM SẢN PHẨM
+                                </span>
+                            </a>
+                        </li>
+                        <!-- Nếu -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?do=nhasanxuat">
+                                <span>
+                                    <i class="icon-nav fa-solid fa-eye"></i>
+                                    SẢN PHẨM
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?do=sanpham">
+                                <span>
+                                    <i class="icon-nav fa-solid fa-city"></i>
+                                    NHÀ SẢN XUẤT
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?do=nguoidung">
+                                <span>
+                                    <i class="icon-nav fa-solid fa-user"></i>
+                                    NGƯỜI DÙNG
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class=" mt-3 col-md-3 ">
+                    <ul class="nav flex-column  nav-list">
+                        <h4 class=" bg_primary text-white p-2 m-0">CÁ NHÂN</h4>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?do=hosocanhan">
+                                <span>
+                                    <i class="icon-nav fa-solid fa-address-card"></i>
+                                    HỒ SƠ
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?do=doimatkhau">
+                                <span>
+                                    <i class="icon-nav fa-solid fa-pen"></i>
+                                    THAY ĐỔI MẬT KHẨU
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-            <!-- Cột phải -->
-            <div class="col-md-9">
-                <?php
-                // Kiểm tra nếu trang là trang đăng nhập
-                $do = isset($_GET['do']) ? $_GET['do'] : 'home';
-                if ($do === 'dangnhap.php')
-                    include 'dangnhap.php';
+
+            <!-- Nếu chưa đăng nhập sẽ chiếm nguyên trang -->
+            <?php
+            if (!isset($_SESSION['MaNguoiDung'])) {
+                // Kiểm tra nếu trang chưa đăng nhập
+                echo '<div class="col-md-12">';
+                $do = isset($_GET["do"]) ? $_GET["do"] : "home";
+                if ($do === "dangnhap.php")
+                    include "dangnhap.php";
                 else
                     include $do . ".php";
-                ?>
-            </div>
+                echo '</div> ';
+            } else {
+                // Trang đã đăng nhập
+            
+                // Hiển thị cột trái
+                echo '<div class="col-md-3">';
+                echo '<nav class="d-block">
+                            <div class=" mt-3 col-md-3 ">
+                                <ul class="nav flex-column  nav-list ">
+                                    <h4 class=" bg_primary text-white p-2 m-0">QUẢN LÝ</h4>';
+                // Nếu quyền hạn nhân viên và admin
+                if ($_SESSION['QuyenHan'] == 1 || $_SESSION['QuyenHan'] == 0) {
+                    echo '<li class="nav-item">
+                            <a class="nav-link" href="index.php?do=sanpham_them">
+                                <span>
+                                <i class="icon-nav fa-solid fa-plus"></i>
+                                THÊM SẢN PHẨM
+                                </span>
+                            </a>
+                        </li>';
+                }
+                // Nếu quyền hạn admin
+                if ($_SESSION['QuyenHan'] == 0) {
+                    echo '<li class="nav-item">
+                                <a class="nav-link" href="index.php?do=nhasanxuat">
+                                    <span>
+                                        <i class="icon-nav fa-solid fa-eye"></i>
+                                        SẢN PHẨM
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?do=sanpham">
+                                    <span>
+                                        <i class="icon-nav fa-solid fa-city"></i>
+                                        NHÀ SẢN XUẤT
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.php?do=nguoidung">
+                                    <span>
+                                        <i class="icon-nav fa-solid fa-user"></i>
+                                        NGƯỜI DÙNG
+                                    </span>
+                                </a>
+                            </li>';
+                }
+                echo '</ul>';
+                echo '</div>';
+                // Nếu quyền hạn là admin, nhân viên, khach hang
+                if ($_SESSION['QuyenHan'] == 0 || $_SESSION['QuyenHan'] == 1 || $_SESSION['QuyenHan'] == 2) {
+                    echo '
+                    <div class=" mt-3 col-md-3 ">
+                            <ul class="nav flex-column  nav-list">
+                                <h4 class=" bg_primary text-white p-2 m-0">CÁ NHÂN</h4>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?do=hosocanhan">
+                                        <span>
+                                            <i class="icon-nav fa-solid fa-address-card"></i>
+                                            HỒ SƠ
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?do=doimatkhau">
+                                        <span>
+                                            <i class="icon-nav fa-solid fa-pen"></i>
+                                            THAY ĐỔI MẬT KHẨU
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>';
+                }
+                echo '</nav>';
+                echo '</div>';
+
+
+                // Hiển thị cột phải
+                echo '< class="col-md-9">';
+                $do = isset($_GET["do"]) ? $_GET["do"] : "home";
+                if ($do === "dangnhap.php")
+                    include "dangnhap.php";
+                else
+                    include $do . ".php";
+                echo '</div>';
+            }
+            ?>
+
+
         </div>
     </div>
 
