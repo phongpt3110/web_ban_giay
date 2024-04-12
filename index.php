@@ -101,69 +101,6 @@ include_once "thuvien.php";
     <!-- Phần giữa trang -->
     <div class="container mt-5">
         <div class="row">
-            <nav class="d-block">
-                <div class=" mt-3 col-md-3 ">
-                    <ul class="nav flex-column  nav-list ">
-                        <h4 class=" bg_primary text-white p-2 m-0">QUẢN LÝ</h4>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?do=sanpham_them">
-                                <span>
-                                    <i class="icon-nav fa-solid fa-plus"></i>
-                                    THÊM SẢN PHẨM
-                                </span>
-                            </a>
-                        </li>
-                        <!-- Nếu -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?do=nhasanxuat">
-                                <span>
-                                    <i class="icon-nav fa-solid fa-eye"></i>
-                                    SẢN PHẨM
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?do=sanpham">
-                                <span>
-                                    <i class="icon-nav fa-solid fa-city"></i>
-                                    NHÀ SẢN XUẤT
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?do=nguoidung">
-                                <span>
-                                    <i class="icon-nav fa-solid fa-user"></i>
-                                    NGƯỜI DÙNG
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class=" mt-3 col-md-3 ">
-                    <ul class="nav flex-column  nav-list">
-                        <h4 class=" bg_primary text-white p-2 m-0">CÁ NHÂN</h4>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?do=hosocanhan">
-                                <span>
-                                    <i class="icon-nav fa-solid fa-address-card"></i>
-                                    HỒ SƠ
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?do=doimatkhau">
-                                <span>
-                                    <i class="icon-nav fa-solid fa-pen"></i>
-                                    THAY ĐỔI MẬT KHẨU
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-
-
             <!-- Nếu chưa đăng nhập sẽ chiếm nguyên trang -->
             <?php
             if (!isset($_SESSION['MaNguoiDung'])) {
