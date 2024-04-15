@@ -55,14 +55,15 @@ include_once "thuvien.php";
                         $taikhoan = "Tài khoản";
                         if (isset($_SESSION["QuyenHan"]) && $_SESSION["HoTen"]) {
                             // Nếu admin or khách hàng hiện tên
-                            if ($_SESSION['QuyenHan'] == 0) {
+                            if ($_SESSION['QuyenHan'] == 0 || $_SESSION['QuyenHan'] == 1) {
                                 echo $_SESSION['HoTen'];
-                            } elseif ($_SESSION['QuyenHan'] == 1)
-                                echo $_SESSION['HoTen'];
-                            else {
+                            } else {
                                 echo $taikhoan;
                             }
+                        } else {
+                            echo $taikhoan;
                         }
+
                         ?>
                     </button>
 
@@ -100,7 +101,7 @@ include_once "thuvien.php";
     <!-- Phần giữa trang -->
     <div class="container mt-5">
         <div class="row">
-            <div class=" mt-3 col-md-3 ">
+            <!-- <div class=" mt-3 col-md-3 ">
                 <ul class="nav flex-column  nav-list">
                     <h4 class=" bg_primary text-white p-2 m-0">CÁ NHÂN</h4>
                     <li class="nav-item">
@@ -120,7 +121,7 @@ include_once "thuvien.php";
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
             <!-- Nếu chưa đăng nhập sẽ chiếm nguyên trang -->
             <?php
             if (!isset($_SESSION['MaNguoiDung'])) {
