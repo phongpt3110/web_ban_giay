@@ -30,7 +30,7 @@
                     </div>
 
                     <!-- From đăng nhập -->
-                    <form action="" method="">
+                    <form action="index.php?" method="post">
                         <!-- Nhập tên tài khoản -->
                         <div class="input-group mb-3">
                             <input type="text" name="TenDangNhap" class="form-control form-control-lg bg-light fs-6"

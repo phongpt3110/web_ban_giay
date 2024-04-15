@@ -18,9 +18,9 @@
                     <!-- From đăng nhập -->
                     <form action="" method="">
                         <!-- Nhập tên hiển thị -->
-                        <div class="input-group mb-3">
-                            <input type="text" name="TenHienThi" class="form-control form-control-lg bg-light fs-6"
-                                placeholder="Tên hiển thị">
+                        <div class="mb-3 mt-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Nhập Email" name="email">
                         </div>
                         <!-- Nhập tên tài khoản -->
                         <div class="input-group mb-3">
