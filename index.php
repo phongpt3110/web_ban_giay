@@ -100,8 +100,6 @@ include_once "thuvien.php";
     <!-- Phần giữa trang -->
     <div class="container mt-5">
         <div class="row">
-
-
             <div class=" mt-3 col-md-3 ">
                 <ul class="nav flex-column  nav-list">
                     <h4 class=" bg_primary text-white p-2 m-0">CÁ NHÂN</h4>
