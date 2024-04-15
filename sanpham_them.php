@@ -20,11 +20,11 @@
             BaoLoi("Tên sản phẩm không được để trống");
         } elseif (trim($NhaSanXuat) == "") {
             BaoLoi("Bạn chưa chọn nhà sản xuất");
-        } elseif (trim($TenSanPham) == "" || !is_numeric($Gia)) {
+        } elseif (trim($Gia) == "" || !is_numeric($Gia)) {
             BaoLoi("Giá sản phẩm phải là số");
-        } elseif (trim($TenSanPham) == "" || !is_numeric($SoLuong)) {
+        } elseif (trim($SoLuong) == "" || !is_numeric($SoLuong)) {
             BaoLoi("Số lượng sản phẩm phải là số");
-        } elseif (trim($TenSanPham) == "" || !is_numeric($TiLeGiam)) {
+        } elseif (trim($TiLeGiam) == "" || !is_numeric($TiLeGiam)) {
             BaoLoi("Tỉ lệ giảm của sản phẩm phải là số");
         } else {
             // Lưu tập tin vào thu mục
