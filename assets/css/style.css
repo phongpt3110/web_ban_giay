@@ -226,3 +226,41 @@ footer ul li:hover {
     padding: 20px;
   }
 }
+
+/* -----------------------------DANH SÁCH - THÊM SẢN PHẨM ------------------------ */
+
+.title {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+}
+
+.header-ds {
+  font-weight: 900;
+  color: var(--primary-color);
+}
+#products tr {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#products td img {
+  display: block;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+#products .icon-del {
+  color: var(--color-danger);
+}
+
+#products .icon-up {
+  color: var(--color-success);
+}
+
+#products a:hover {
+  opacity: 0.5;
+}
+
+#products tr:hover {
+  background-color: #1b9c85;
+}
