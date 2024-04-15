@@ -66,7 +66,6 @@ include_once "thuvien.php";
                         ?>
                     </button>
 
-
                     <!-- Phương thức đăng nhập, đăng ký, đăng xuất -->
                     <ul class="dropdown-menu" aria-labelledby="accountDropdownMenu">
                         <?php
@@ -101,6 +100,29 @@ include_once "thuvien.php";
     <!-- Phần giữa trang -->
     <div class="container mt-5">
         <div class="row">
+
+
+            <div class=" mt-3 col-md-3 ">
+                <ul class="nav flex-column  nav-list">
+                    <h4 class=" bg_primary text-white p-2 m-0">CÁ NHÂN</h4>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?do=sanpham_them">
+                            <span>
+                                <i class="icon-nav fa-solid fa-address-card"></i>
+                                THÊM SẢN PHẨM
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?do=sanpham">
+                            <span>
+                                <i class="icon-nav fa-solid fa-pen"></i>
+                                DANH SÁCH SẢN PHẨM
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <!-- Nếu chưa đăng nhập sẽ chiếm nguyên trang -->
             <?php
             if (!isset($_SESSION['MaNguoiDung'])) {
@@ -135,7 +157,7 @@ include_once "thuvien.php";
                 // Nếu quyền hạn admin
                 if ($_SESSION['QuyenHan'] == 0) {
                     echo '<li class="nav-item">
-                                <a class="nav-link" href="index.php?do=nhasanxuat">
+                                <a class="nav-link" href="index.php?do=sanpham">
                                     <span>
                                         <i class="icon-nav fa-solid fa-eye"></i>
                                         SẢN PHẨM
@@ -143,7 +165,7 @@ include_once "thuvien.php";
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php?do=sanpham">
+                                <a class="nav-link" href="index.php?do=nhasanxuat">
                                     <span>
                                         <i class="icon-nav fa-solid fa-city"></i>
                                         NHÀ SẢN XUẤT
