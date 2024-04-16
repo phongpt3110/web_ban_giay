@@ -67,10 +67,8 @@ a {
 /* ------------------------------Thanh điều hướng------------------------------ */
 
 .nav-list {
-  border-radius: 10px;
   overflow: hidden;
   box-shadow: var(--box-shadow);
-  width: 70%;
 }
 .nav-list:hover {
   box-shadow: none;
@@ -223,7 +221,6 @@ footer ul li:hover {
 }
 
 .header-ds {
-  font-weight: 900;
   color: var(--primary-color);
 }
 #products tr {

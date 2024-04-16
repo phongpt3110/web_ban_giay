@@ -61,25 +61,28 @@ include_once "thuvien.php";
                         } else {
                             echo $taikhoan;
                         }
-                        
+
                         ?>
                     </button>
                     <!-- Phương thức đăng nhập, đăng ký, đăng xuất -->
                     <ul class="dropdown-menu" aria-labelledby="accountDropdownMenu">
                         <?php
-                        // Hiển thị from đăng nhập 
-                        echo '<li><a class="dropdown-item" href="index.php?do=dangky">
-                                    <i class="fa-solid fa-user-pen" style="color: #0f3057;"></i>
-                                    Đăng ký</a>
-                            </li>';
-                        // Hiển thị from đăng ký
-                        echo '<li><a class="dropdown-item" href="index.php?do=dangnhap">
-                                    <i class="fa-solid fa-user-check" style="color: #0f3057;"></i>
-                                    Đăng nhập</a></li>';
-                        // Đăng xuất thông tin
-                        echo '<li><a class="dropdown-item" href="index.php?do=dangxuat">
-                                    <i class="fa-solid fa-user-xmark" style="color: #0f3057;"></i>
-                                    Đăng xuất</a></li>';
+                        if (isset($_SESSION['QuyenHan'])) {
+                            // Đăng xuất thông tin
+                            echo '<li><a class="dropdown-item" href="index.php?do=dangxuat">
+                            <i class="fa-solid fa-user-xmark" style="color: #0f3057;"></i>
+                            Đăng xuất</a></li>';
+                        } else {
+                            // Hiển thị from đăng nhập
+                            echo '<li><a class="dropdown-item" href="index.php?do=dangky">
+                                        <i class="fa-solid fa-user-pen" style="color: #0f3057;"></i>
+                                        Đăng ký</a>
+                                </li>';
+                            // Hiển thị from đăng nhập
+                            echo '<li><a class="dropdown-item" href="index.php?do=dangnhap">
+                                        <i class="fa-solid fa-user-check" style="color: #0f3057;"></i>
+                                        Đăng nhập</a></li>';
+                        }
                         ?>
                     </ul>
                 </div>
@@ -96,30 +99,8 @@ include_once "thuvien.php";
     <!-- Phần giữa trang -->
     <div class="container mt-5">
         <div class="row">
-            <!-- <div class=" mt-3 col-md-3 ">
-                <ul class="nav flex-column  nav-list">
-                    <h4 class=" bg_primary text-white p-2 m-0">CÁ NHÂN</h4>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?do=sanpham_them">
-                            <span>
-                                <i class="icon-nav fa-solid fa-address-card"></i>
-                                THÊM SẢN PHẨM
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?do=sanpham">
-                            <span>
-                                <i class="icon-nav fa-solid fa-pen"></i>
-                                DANH SÁCH SẢN PHẨM
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div> -->
-            <!-- Nếu chưa đăng nhập sẽ chiếm nguyên trang -->
             <?php
-            if (!isset($_SESSION['MaNguoiDung'])) {
+            if (!isset($_SESSION['QuyenHan'])) {
                 // Kiểm tra nếu trang chưa đăng nhập
                 echo '<div class="col-md-12">';
                 $do = isset($_GET["do"]) ? $_GET["do"] : "home";
@@ -129,14 +110,13 @@ include_once "thuvien.php";
                     include $do . ".php";
                 echo '</div> ';
             } else {
-                // ------------------ Trang đã đăng nhập 
-            
+                // ------------------ Trang đã đăng nhập ---------------------------------
                 // Hiển thị cột trái
                 echo '<div class="col-md-3">';
                 echo '<nav class="d-block">
-                            <div class=" mt-3 col-md-3 ">
-                                <ul class="nav flex-column  nav-list ">
-                                    <h4 class=" bg_primary text-white p-2 m-0">QUẢN LÝ</h4>';
+                            <div class="mt-3 col-md-12 ">
+                                <ul class="nav flex-column nav-list ">
+                                    <h4 class="bg_primary text-white p-2 m-0">QUẢN LÝ</h4>';
                 // Nếu quyền hạn nhân viên và admin
                 if ($_SESSION['QuyenHan'] == 1 || $_SESSION['QuyenHan'] == 0) {
                     echo '<li class="nav-item">
@@ -175,7 +155,7 @@ include_once "thuvien.php";
                                 </a>
                             </li>';
                 }
-                // Nếu là khách hàng
+                // Menu khách hàng
                 if ($_SESSION['QuyenHan'] == 2) {
                     echo '<li class="nav-item">
                                 <a class="nav-link" href="index.php?do=dssanpham_khachhang&id=' . $_SESSION['MaNguoiDung'] . '">
@@ -197,9 +177,10 @@ include_once "thuvien.php";
                 echo '</ul>';
                 echo '</div>';
 
-                // Nếu quyền hạn là admin, nhân viên, khach hang
-                echo '
-                    <div class=" mt-3 col-md-3 ">
+                //Hiện menu cá nhân
+                if (isset($_SESSION['HoTen'])) {
+                    // Nếu quyền hạn là admin, nhân viên, khach hang
+                    echo '  <div class=" mt-3 col-md-12 ">
                             <ul class="nav flex-column  nav-list">
                                 <h4 class=" bg_primary text-white p-2 m-0">CÁ NHÂN</h4>
                                 <li class="nav-item">
@@ -220,10 +201,11 @@ include_once "thuvien.php";
                                 </li>
                             </ul>
                         </div>';
+                }
                 echo '</nav>';
                 echo '</div>';
                 // Hiển thị cột phải
-                echo '< class="col-md-9">';
+                echo '<div class="col-md-9">';
                 $do = isset($_GET["do"]) ? $_GET["do"] : "home";
                 if ($do === "dangnhap.php")
                     include "dangnhap.php";

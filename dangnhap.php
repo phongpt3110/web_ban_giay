@@ -1,4 +1,14 @@
+<script>
+    function showPass() {
+        var matKhau = document.getElementsByName('MatKhau')[0];
 
+        if (matKhau.type === 'password') {
+            matKhau.type = 'text';
+        } else {
+            matKhau.type = 'password';
+        }
+    }
+</script>
 
 <!-- from đăng nhập -->
 
@@ -17,8 +27,7 @@
                     style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Bạn có thể tham gia với chúng
                     tôi</small>
                 <button type="button" class="btn btn-md btn-outline-light rounded-2 mt-2"><a
-                        href="index.php?do=dangky">ĐĂNG
-                        KÝ</a></button>
+                        href="index.php?do=dangky">ĐĂNG KÝ</a></button>
             </div>
             <!-- Cột phải là from đăng nhập -->
             <div class="col-md-6 right-box">
@@ -44,7 +53,7 @@
                         <!-- Hiển thị mật khẩu -->
                         <div class="input-group mb-5 d-flex justify-content-between">
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="formCheck">
+                                <input type="checkbox" class="form-check-input" id="formCheck" onclick="showPass()">
                                 <label for="formCheck" class="form-check-label text-secondary"><small>Hiển thị mật
                                         khẩu</small></label>
                             </div>

@@ -13,10 +13,7 @@ if (!$ds) {
 <div class="container mt-3" id="products">
     <div class="row">
         <div class="col-12-md">
-            <div class="header-text d-flex justify-content-center align-items-center mb-2">
-                <h3 class="header-ds flex-grow-1 text-center">DANH SÁCH SẢN PHẨM</h3>
-                <a href="index.php?do=sanpham_them" class="btn btn-warning">THÊM SẢN PHẨM</a>
-            </div>
+            <h3 class="header-ds bg_primary text-center text-white mb-0 p-1">DANH SÁCH SẢN PHẨM</h3>
             <div class="table-responsive-lg ">
                 <table class="table table-striped ">
                     <thead>
