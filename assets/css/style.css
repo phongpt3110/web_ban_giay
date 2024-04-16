@@ -45,11 +45,12 @@ body {
 }
 
 /* Giỏ hàng  */
-.icon {
-  font-size: 40px;
+.icon-header {
+  font-size: 30px;
+  display: block;
 }
 
-#cart .icon:hover {
+.icon-header:hover {
   color: var(--secondary-color);
   transform: translate(-2px);
 }
@@ -214,19 +215,6 @@ footer ul li:hover {
   border-radius: 30px;
 }
 
-@media only screen and (max-width: 768px) {
-  #fromRegis .box-area {
-    margin: 0 10px;
-  }
-  #fromRegis .left-box {
-    height: auto;
-    overflow: hidden;
-  }
-  #fromRegis .right-box {
-    padding: 20px;
-  }
-}
-
 /* -----------------------------DANH SÁCH - THÊM SẢN PHẨM ------------------------ */
 
 .title {
@@ -263,4 +251,20 @@ footer ul li:hover {
 
 #products tr:hover {
   background-color: #1b9c85;
+}
+
+/* ----------------------------------Responsive-------------------------- */
+@media only screen and (max-width: 768px) {
+  #fromRegis .box-area {
+    margin: 0 10px;
+  }
+  #fromRegis .left-box {
+    height: auto;
+    overflow: hidden;
+  }
+  #fromRegis .right-box {
+    padding: 20px;
+  }
+
+  /* ------- Icon tài khoản  */
 }

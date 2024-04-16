@@ -6,6 +6,6 @@ function BaoLoi($thongbao = "")
 
 function ThongBao($thongbao = "")
 {
-    echo "<h3>Hoàn thành</h3><p class='ThongBao'>$thongbao</p>";
+    echo "<script>alert('$thongbao');</script>";
 }
 ?>
