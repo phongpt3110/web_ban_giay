@@ -53,7 +53,6 @@ include_once "thuvien.php";
                         <?php
                         // Đặt mặt định là "Tài khoản"
                         $taikhoan = "Tài khoản";
-                        echo $taikhoan;
                         if (isset($_SESSION["QuyenHan"]) && $_SESSION["HoTen"]) {
                             // Nếu admin or khách hàng hiện tên
                             if ($_SESSION['QuyenHan'] == 0) {
@@ -64,6 +63,7 @@ include_once "thuvien.php";
                                 echo $taikhoan;
                             }
                         }
+                        
                         ?>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="accountDropdownMenu">
