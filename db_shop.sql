@@ -28,7 +28,7 @@ CREATE TABLE
     `danhsach` (
         `MaSP` int (10) NOT NULL AUTO_INCREMENT,
         `TenSP` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-        `IdNXS` int (20) NOT NULL,
+        `IdNSX` int (20) NOT NULL,
         `Gia` int (10) NOT NULL,
         `TiLeGiam` int (5),
         `SoLuong` int (11) NOT NULL,

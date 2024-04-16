@@ -20,10 +20,8 @@ include_once "thuvien.php";
     <!-- Nhúng font-icon -->
     <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.3.0-web/css/all.min.css">
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
-
     <!-- Nhúng css -->
     <link rel="stylesheet" href="./assets/css/style.css" />
-
 </head>
 
 <body>
@@ -45,7 +43,7 @@ include_once "thuvien.php";
             </div>
             <!-- Tài khoản -->
             <div id="account" class="d-md-flex me-2 mt-2 align-items-center">
-                <i class="icon fa-solid fa-user-gear fa-2xl me-2"></i>
+                <i class="icon-header fa-solid fa-user-gear me-2"></i>
                 <!-- Đăng nhập, đăng ký, đăng xuất -->
                 <div class="dropdown">
                     <button type="button" class="border-0 bg_primary text-white dropdown-toggle"
@@ -65,7 +63,6 @@ include_once "thuvien.php";
                         }
                         ?>
                     </button>
-
                     <!-- Phương thức đăng nhập, đăng ký, đăng xuất -->
                     <ul class="dropdown-menu" aria-labelledby="accountDropdownMenu">
                         <?php
@@ -83,15 +80,13 @@ include_once "thuvien.php";
                                     <i class="fa-solid fa-user-xmark" style="color: #0f3057;"></i>
                                     Đăng xuất</a></li>';
                         ?>
-
                     </ul>
                 </div>
-
             </div>
             <!-- Giỏ hàng -->
             <div id="cart" class="me-2 mt-2">
                 <a href="#">
-                    <i class="icon fa-solid fa-cart-flatbed fa-2xl"></i>
+                    <i class="icon-header fa-solid fa-cart-flatbed"></i>
                 </a>
             </div>
         </div>
@@ -133,7 +128,7 @@ include_once "thuvien.php";
                     include $do . ".php";
                 echo '</div> ';
             } else {
-                // Trang đã đăng nhập
+                // ------------------ Trang đã đăng nhập 
             
                 // Hiển thị cột trái
                 echo '<div class="col-md-3">';
@@ -226,8 +221,6 @@ include_once "thuvien.php";
                         </div>';
                 echo '</nav>';
                 echo '</div>';
-
-
                 // Hiển thị cột phải
                 echo '< class="col-md-9">';
                 $do = isset($_GET["do"]) ? $_GET["do"] : "home";
@@ -238,11 +231,8 @@ include_once "thuvien.php";
                 echo '</div>';
             }
             ?>
-
-
         </div>
     </div>
-
     <!-- Phần chân trang -->
     <footer class="container-fluid rounded mt-5 p-5 bg_primary text-white text-justify">
         <div class="container">

@@ -1,54 +1,52 @@
-<html lang="en">
+<?php
+// Lấy danh sách đổ vào nhóm 
+$sql = "SELECT * FROM `danhsach` WHERE MaSP = " . $_GET['id'];
+$ds = $connect->query($sql);
+//Nếu kết quả kết nối không được thì xuất báo lỗi và thoát
+if (!$ds) {
+    die("Không thể thực hiện câu lệnh SQL: " . $connect->connect_error);
+}
+// Lặp qua các cột
+$dong = $ds->fetch_array(MYSQLI_ASSOC);
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-    <?php
-    // Lấy danh sách đổ vào nhóm 
-    $sql = "SELECT * FROM `danhsach` WHERE MaSP = " . $_GET['id'];
-    $ds = $connect->query($sql);
-    //Nếu kết quả kết nối không được thì xuất báo lỗi và thoát
-    if (!$ds) {
-        die("Không thể thực hiện câu lệnh SQL: " . $connect->connect_error);
-    }
-    // Lặp qua tuần cột
-    $dong = $ds->fetch_array(MYSQLI_ASSOC);
-    ?>
-
-    <!-- Xử lý from  -->
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Lấy giá trị gán vào biến
-        $MaSanPham = $_POST['MaSanPham'];
-        $TenSanPham = $_POST['TenSanPham'];
-        $Gia = $_POST['Gia'];
-        $NhaSanXuat = $_POST['NhaSanXuat'];
-        $SoLuong = $_POST['SoLuong'];
-        $TiLeGiam = $_POST['TiLeGiam'];
-        $MoTa = $_POST['MoTa'];
+<!-- Xử lý from  -->
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Lấy giá trị gán vào biến
+    $MaSanPham = $_POST['MaSanPham'];
+    $TenSanPham = $_POST['TenSanPham'];
+    $Gia = $_POST['Gia'];
+    $NhaSanXuat = $_POST['NhaSanXuat'];
+    $SoLuong = $_POST['SoLuong'];
+    $TiLeGiam = $_POST['TiLeGiam'];
+    $MoTa = $_POST['MoTa'];
 
 
-        if (trim($TenSanPham) == "")
-            BaoLoi("Tên sản phẩm không được để trống");
-        elseif (trim($NhaSanXuat) == "")
-            BaoLoi("Bạn chưa chọn nhà sản xuất");
-        elseif (trim($Gia) == "")
-            BaoLoi("Giá sản phẩm phải là số");
-        elseif (trim($SoLuong) == "")
-            BaoLoi("Số lượng sản phẩm phải là số");
-        elseif (trim($TiLeGiam) == "")
-            BaoLoi("Tỉ lệ giảm của sản phẩm phải là số");
-        else {
+    if (trim($TenSanPham) == "")
+        BaoLoi("Tên sản phẩm không được để trống");
+    elseif (trim($NhaSanXuat) == "")
+        BaoLoi("Bạn chưa chọn nhà sản xuất");
+    elseif (trim($Gia) == "" || !is_numeric($Gia))
+        BaoLoi("Giá sản phẩm phải là số");
+    elseif (trim($SoLuong) == "" || !is_numeric($SoLuong))
+        BaoLoi("Số lượng sản phẩm phải là số");
+    elseif (!is_numeric($TiLeGiam))
+        BaoLoi("Tỉ lệ giảm của sản phẩm phải là số");
+    else {
+        // Lấy hình ảnh hiện tại
+        $target_path = $dong['AnhSP'];
+
+        // Xử lý tải lên hình ảnh mới và cập nhật URL
+        if (!empty($_FILES['HinhAnh']["name"])) {
             //Lưu tập tin upload vào thư mục hinhanh
             $target_path = "./assets/images/";
             $target_path = $target_path . basename($_FILES['HinhAnh']['name']);
             // di chuyển hình ảnh vào thư mục
             move_uploaded_file($_FILES['HinhAnh']['tmp_name'], $target_path);
-            // Câu lệnh cập nhật
-            $sql = "UPDATE `danhsach`
+        }
+        // Câu lệnh cập nhật
+        $sql = "UPDATE `danhsach`
                     SET 
                     `TenSP` = '$TenSanPham',
                     `IdNSX` = '$NhaSanXuat',
@@ -59,21 +57,21 @@
                     `AnhSP` = '$target_path'
                     WHERE `MaSP` = '$MaSanPham'";
 
-            $ds = $connect->query($sql);
-            if (!$ds) {
-                die("Không thể thực hiện câu lệnh SQL: " . mysqli_connect_error());
-            } else {
-                BaoLoi("Bạn đã cập nhật thành công!!!");
-            }
+        $ds = $connect->query($sql);
+        if (!$ds) {
+            die("Không thể thực hiện câu lệnh SQL: " . mysqli_connect_error());
+        } else {
+            ThongBao("Bạn đã cập nhật thành công sản phẩm $TenSanPham");
+            echo '<script>
+                    window.location.href = "index.php?do=sanpham";
+                </script>';
         }
     }
-    ?>
+}
+?>
 
 
-
-
-
-
+<body>
     <!-- Thiết kế from cập nhật sản phẩm -->
     <div id="fromProduct" class="container d-flex justify-content-center align-items-center">
         <div class="row border rounded-5 p-3 bg-white shadow box-area">
@@ -145,7 +143,7 @@
                             <!-- Cập nhật hình ảnh -->
                             <div class="form-floating mb-3 w-50">
                                 <input type="file" class="form-control" id="ha" name="HinhAnh" accept="image/*">
-                                <label for=" ha">HÌNH ẢNH</label>
+                                <label for="ha">HÌNH ẢNH</label>
                             </div>
                         </div>
                         <div class="form-floating mb-3">
@@ -164,9 +162,4 @@
             </div>
         </div>
     </div>
-
-
-
 </body>
-
-</html>
