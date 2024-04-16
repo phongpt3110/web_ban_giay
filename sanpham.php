@@ -46,14 +46,13 @@ if (!$ds) {
                             echo "<td><img src='" . $dong['AnhSP'] . "' width='100'/></td>";
                             echo "<td>
                                         <a href='index.php?do=sanpham_sua&id=" . $dong['MaSP'] . "'>
-                                        <i class='icon-up fa-solid fa-pen-to-square fa-xl'>
-                                        </i></a>
+                                        <i class='fa-solid fa-pen-to-square fa-xl' style='color: #cc041a;'></i></a>
                                     </td>";
                             echo "<td>
                                         <a href='index.php?do=sanpham_xoa&id=" . $dong['MaSP'] .
                                 "'onclick='return confirm(\"Bạn có muốn xóa bài viết " . $dong['TenSP'] .
                                 " không?\")'>
-                                        <i class='icon-del fa-solid fa-trash fa-xl'></i></a>
+                                        <i class=' fa-solid fa-trash fa-xl' style='color: #1c9c46;'></i></a>
                                     </td>";
                             echo "</tr>";
                         }

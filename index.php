@@ -74,14 +74,14 @@ include_once "thuvien.php";
                             Đăng xuất</a></li>';
                         } else {
                             // Hiển thị from đăng nhập
+                            echo '<li><a class="dropdown-item" href="index.php?do=dangnhap">
+                                        <i class="fa-solid fa-user-check" style="color: #0f3057;"></i>
+                                        Đăng nhập</a></li>';
+                            // Hiển thị from đăng ký
                             echo '<li><a class="dropdown-item" href="index.php?do=dangky">
                                         <i class="fa-solid fa-user-pen" style="color: #0f3057;"></i>
                                         Đăng ký</a>
                                 </li>';
-                            // Hiển thị from đăng nhập
-                            echo '<li><a class="dropdown-item" href="index.php?do=dangnhap">
-                                        <i class="fa-solid fa-user-check" style="color: #0f3057;"></i>
-                                        Đăng nhập</a></li>';
                         }
                         ?>
                     </ul>

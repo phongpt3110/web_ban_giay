@@ -234,14 +234,6 @@ footer ul li:hover {
   margin: 0 auto;
 }
 
-#products .icon-del {
-  color: var(--color-danger);
-}
-
-#products .icon-up {
-  color: var(--color-success);
-}
-
 #products a:hover {
   opacity: 0.5;
 }
@@ -262,6 +254,8 @@ footer ul li:hover {
   #fromRegis .right-box {
     padding: 20px;
   }
-
-  /* ------- Icon tài khoản  */
+}
+/* ------- Icon người dùng-------------- */
+.icon-user {
+  text-align: center;
 }
