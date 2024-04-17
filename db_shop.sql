@@ -103,7 +103,7 @@ CREATE TABLE
 -- Dumping data for table `nguoidung`
 --
 INSERT INTO
-    `nguoidung` (`MaNguoiDung`, `QuyenHan`, /*`TenNguoiDung`*/, 'Email', `TenDangNhap`, `MatKhau`, `DiaChi`, `Khoa`)
+    `nguoidung` (`MaNguoiDung`, `QuyenHan`, `TenNguoiDung`, 'Email', `TenDangNhap`, `MatKhau`, `DiaChi`, `Khoa`)
 VALUES
     (1, 0, 'Thành Phong', 'phong', MD5 ('phong'), 'An Giang', 0),
     (2, 0, 'Phước Tuy', 'tuy', MD5 ('tuy'), 'An Giang', 0),
