@@ -1,8 +1,9 @@
+
 <!-- from đăng nhập -->
 <!DOCTYPE html>
 <html lang="en">
-
 <body>
+    
     <!-- Thiết kế from đăng nhập -->
     <div id="fromRegis" class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="row border rounded-5 p-4 bg-white shadow box-area">
@@ -74,7 +75,7 @@
             </div>
         </div>
     </div>
-
+    
 </body>
-
 </html>
+
