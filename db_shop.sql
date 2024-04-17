@@ -95,6 +95,7 @@ CREATE TABLE
         `MatKhau` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
         `DiaChi` text COLLATE utf8_unicode_ci NOT NULL,
         `Khoa` tinyint (1) NOT NULL,
+        `Email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
         PRIMARY KEY (`MaNguoiDung`)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci AUTO_INCREMENT = 3;
 
@@ -102,11 +103,11 @@ CREATE TABLE
 -- Dumping data for table `nguoidung`
 --
 INSERT INTO
-    `nguoidung` (`MaNguoiDung`, `QuyenHan`, `TenNguoiDung`, `TenDangNhap`, `MatKhau`, `DiaChi`, `Khoa`)
+    `nguoidung` (`MaNguoiDung`, `QuyenHan`, `TenNguoiDung`, `TenDangNhap`, `MatKhau`, `DiaChi`, `Khoa`, 'Email')
 VALUES
-    (1, 0, 'Thành Phong', 'phong', MD5 ('phong'), 'An Giang', 0),
-    (2, 0, 'Phước Tuy', 'tuy', MD5 ('tuy'), 'An Giang', 0),
-    (3, 1, 'Client', 'client', MD5 ('client'), 'Cần Thơ', 0);
+    (1, 0, 'Thành Phong', 'phong', MD5 ('phong'), 'An Giang', 0, 'phong_dth216083@student.agu.edu.vn'),
+    (2, 0, 'Phước Tuy', 'tuy', MD5 ('tuy'), 'An Giang', 0, 'tuy_dth216232@student.agu.edu.vn'),
+    (3, 1, 'Client', 'client', MD5 ('client'), 'Cần Thơ', 0, 'client@example.com');
 
 CREATE TABLE
     `nhasanxuat` (

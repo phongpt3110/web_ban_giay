@@ -19,9 +19,14 @@
                     <form action="index.php?do=dangky_xuly" method="post">
                         <!-- Nhập tên hiển thị -->
                         <div class="mb-3 mt-3">
-                            <label for="email" class="form-label">Email:</label>
+                            <label for="email" class="form-label"></label>
                             <input type="email" class="form-control" id="email" placeholder="Nhập Email" name="email">
                         </div>
+                        <div class="input-group mb-3">
+                            <input type="text" name="TenNguoiDung" class="form-control form-control-lg bg-light fs-6"
+                                placeholder="Tên người dùng">
+                        </div>
+
                         <!-- Nhập tên tài khoản -->
                         <div class="input-group mb-3">
                             <input type="text" name="TenDangNhap" class="form-control form-control-lg bg-light fs-6"
@@ -71,7 +76,5 @@
     </div>
 
 </body>
-
-
 
 </html>
