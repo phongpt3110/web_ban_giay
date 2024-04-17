@@ -17,7 +17,7 @@
                     </div>
                     <!-- From đăng nhập -->
                     <form action="index.php?do=dangky_xuly" method="post">
-                        <!-- Nhập tên hiển thị -->
+                        <!-- Nhập email -->
                         <div class="mb-3 mt-3">
                             <label for="email" class="form-label">Email:</label>
                             <input type="email" class="form-control" id="email" placeholder="Nhập Email" name="email">

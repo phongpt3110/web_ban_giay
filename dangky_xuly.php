@@ -1,19 +1,19 @@
 <?php
 	// Lấy thông tin từ FORM
-	$HoVaTen = $_POST['HoVaTen'];
+	$Email = $_POST['Email'];
 	$TenDangNhap = $_POST['TenDangNhap'];
 	$MatKhau = $_POST['MatKhau'];
 	$XacNhanMatKhau = $_POST['XacNhanMatKhau'];
 	
 	// Kiểm tra
-	if(trim($HoVaTen) == "")
-		ThongBaoLoi("Họ và tên không được bỏ trống!");
+	if(trim($Email) == "")
+		BaoLoi("Email không được bỏ trống!");
 	elseif(trim($TenDangNhap) == "")
-		ThongBaoLoi("Tên đăng nhập không được bỏ trống!");
+		BaoLoi("Tên đăng nhập không được bỏ trống!");
 	elseif(trim($MatKhau) == "")
-		ThongBaoLoi("Mật khẩu không được bỏ trống!");
+		BaoLoi("Mật khẩu không được bỏ trống!");
 	elseif($MatKhau != $XacNhanMatKhau)
-		ThongBaoLoi("Xác nhận mật khẩu không đúng!");
+		BaoLoi("Xác nhận mật khẩu không đúng!");
 	else
 	{
 		// Kiểm tra người dùng đã tồn tại chưa
@@ -26,18 +26,18 @@
 			// Mã hóa mật khẩu
 			$MatKhau = md5($MatKhau);
 			
-			$sql_them = "INSERT INTO `tbl_nguoidung`(`TenNguoiDung`, `TenDangNhap`, `MatKhau`, `QuyenHan`, `Khoa`)
-					VALUES ('$HoVaTen', '$TenDangNhap', '$MatKhau', 2, 0)";
+			$sql_them = "INSERT INTO `tbl_nguoidung`(`Email`, `TenDangNhap`, `MatKhau`, `QuyenHan`, `Khoa`)
+					VALUES ('$Email', '$TenDangNhap', '$MatKhau', 2, 0)";
 			$themnd = $connect->query($sql_them);
 			
 			if($themnd)
-				ThongBao("Đăng ký thành công!");
+				BaoLoi("Đăng ký thành công!");
 			else
-				ThongBaoLoi(mysql_error());
+				BaoLoi(mysql_error());
 		}
 		else
 		{
-			ThongBaoLoi("Người dùng với tên đăng nhập đã được sử dụng!");
+			BaoLoi("Người dùng với tên đăng nhập đã được sử dụng!");
 		}
 	}
 ?>
