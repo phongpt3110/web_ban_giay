@@ -184,7 +184,7 @@ include_once "thuvien.php";
                             <ul class="nav flex-column  nav-list">
                                 <h4 class=" bg_primary text-white p-2 m-0">CÁ NHÂN</h4>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php?do=hosocanhan">
+                                    <a class="nav-link" href="index.php?do=nguoidung_hoso">
                                         <span>
                                             <i class="icon-nav fa-solid fa-address-card"></i>
                                             HỒ SƠ

@@ -17,9 +17,10 @@ if (!$ds) {
                 <table class="table table-striped text-center">
                     <thead>
                         <tr>
-                            <th class='col-2'>MÃ NGƯỜI DÙNG</th>
-                            <th class='col-3'>HỌ VÀ TÊN</th>
+                            <th class='col-1'>MÃ</th>
+                            <th class='col-2'>HỌ VÀ TÊN</th>
                             <th class='col-2'>TÊN ĐĂNG NHẬP</th>
+                            <th class='col-3'>ĐỊA CHỈ</th>
                             <th class='col-2'>QUYỀN</th>
                             <th class='col-2' colspan="3">HÀNH ĐỘNG</th>
                         </tr>
@@ -31,6 +32,7 @@ if (!$ds) {
                             echo "<td>" . $dong['MaNguoiDung'] . "</td>";
                             echo "<td style='text-align: left;'>" . $dong['TenNguoiDung'] . "</td>";
                             echo "<td style='text-align: left;'>" . $dong['TenDangNhap'] . "</td>";
+                            echo "<td style='text-align: left;'>" . $dong['DiaChi'] . "</td>";
 
                             // Quyền
                             echo "<td>";
@@ -58,7 +60,7 @@ if (!$ds) {
                             echo "</td>";
 
                             //Sửa người dùng
-                            echo "<td><a href='index.php?do=hosonguoidung&id=" . $dong["MaNguoiDung"] . "'>
+                            echo "<td><a href='index.php?do=nguoidung_hoso&id=" . $dong["MaNguoiDung"] . "'>
                                 <i class='icon-user fa-solid fa-pen-to-square fa-xl' style='color: #cc041a;'></i></a></td>";
                             //Xoá người dùng
                             echo "<td><a href='index.php?do=nguoidung_xoa&id=" . $dong["MaNguoiDung"] . "' 
@@ -70,7 +72,7 @@ if (!$ds) {
                     </tbody>
                 </table>
             </div>
-            <a class="btn btn-success">THÊM NGƯỜI DÙNG</a>
+            <a href="index.php?do=nguoidung_them" class="btn btn-success">THÊM NGƯỜI DÙNG</a>
         </div>
     </div>
 </div>

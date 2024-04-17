@@ -259,3 +259,18 @@ footer ul li:hover {
 .icon-user {
   text-align: center;
 }
+
+/* --------------------------- Đăng nhập  ------------------------ */
+
+.input-group,
+.form-floating {
+  position: relative;
+}
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 5;
+}

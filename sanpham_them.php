@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         BaoLoi("Giá sản phẩm phải là số");
     } elseif (trim($SoLuong) == "" || !is_numeric($SoLuong)) {
         BaoLoi("Số lượng sản phẩm phải là số");
-    } elseif (!is_numeric($TiLeGiam)) {
+    } elseif (trim($TiLeGiam) != "" && !is_numeric($TiLeGiam)) {
         BaoLoi("Tỉ lệ giảm của sản phẩm phải là số");
     } else {
         // Lưu tập tin vào thu mục
@@ -68,14 +68,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <!-- Nhập giá sản phảm -->
                             <div class="form-floating mb-3 w-50">
-                                <input type="text" class="form-control" id="gsp" name="Gia">
+                                <input type="text" class="form-control" id="gsp" name="Gia" required>
                                 <label for="gsp">GIÁ SẢN PHẨM</label>
                             </div>
                         </div>
                         <div class="d-flex">
                             <!-- Nhập nhà sản xuất -->
                             <div class="form-floating mb-3 me-2 w-50">
-                                <select class="form-select" id="sel" name="NhaSanXuat">
+                                <select class="form-select" id="sel" name="NhaSanXuat" required>
                                     <option value="">--Chọn--</option>
                                     <?php
                                     $sql = "SELECT * FROM `nhasanxuat` WHERE 1 ORDER BY `TenNSX` ";
@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
                             <!-- Nhập số lượng -->
                             <div class="form-floating mb-3 w-50">
-                                <input type="text" class="form-control" id="sl" name="SoLuong">
+                                <input type="text" class="form-control" id="sl" name="SoLuong" required>
                                 <label for="sl">SỐ LƯỢNG</label>
                             </div>
                         </div>
