@@ -57,7 +57,7 @@
                             <i class="password-toggle fas fa-eye-slash" onclick="togglePassword()"></i>
                         </div>
                         <!-- Quên mật khẩu -->
-                        <div class="input-group my-3 forgot">
+                        <div class="input-group my-3 forgot d-flex ">
                             <small><a href="#">Quên mật khẩu?</a></small>
                         </div>
                 </div>
