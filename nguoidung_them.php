@@ -1,5 +1,5 @@
 <!-- Thiết kế from đăng nhập -->
-<div id="fromRegis" class="container d-flex justify-content-center align-items-center min-vh-100">
+<div id="fromRegis" class="container d-flex justify-content-center align-items-center">
     <div class="row border rounded-5 p-4 bg-white shadow box-area">
 
         <!-- Cột trái from đăng ký  -->

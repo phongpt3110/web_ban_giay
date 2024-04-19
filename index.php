@@ -35,7 +35,7 @@ include_once "thuvien.php";
                         style="width: 100px; height: 100px;" /></a>
             </div>
             <!-- Tạo khung search -->
-            <div id="search" class="input-group input-group-md me-2 mt-2">
+            <div id="search" class="input-group input-group-m mt-2">
                 <input type="text" class="form-control" placeholder="Search">
                 <button class="btn btn-success" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -46,7 +46,7 @@ include_once "thuvien.php";
                 <i class="icon-header fa-solid fa-user-gear me-2"></i>
                 <!-- Đăng nhập, đăng ký, đăng xuất -->
                 <div class="dropdown">
-                    <button type="button" class="border-0 bg_primary text-white dropdown-toggle"
+                    <button type="button" class="border-0 bg_primary text-white dropdown-toggle p-0"
                         data-bs-toggle="dropdown">
                         <?php
                         // Đặt mặt định là "Tài khoản"
@@ -89,9 +89,23 @@ include_once "thuvien.php";
             </div>
             <!-- Giỏ hàng -->
             <div id="cart" class="me-2 mt-2">
-                <a href="#">
+                <!-- Tạo ra menu bên phải của giỏ hàng -->
+                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#demo">
                     <i class="icon-header fa-solid fa-cart-flatbed"></i>
+                    <span class="badge">0</span>
                 </a>
+                <!-- Hiển thị menu giở hàng -->
+                <div class="offcanvas offcanvas-end offcanvas-lg bg-white" id="demo">
+                    <div class="offcanvas-header">
+                        <h1 class="offcanvas-title">GIỎ HÀNG</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>Some text lorem ipsum.</p>
+                        <p>Some text lorem ipsum.</p>
+                        <p>Some text lorem ipsum.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
