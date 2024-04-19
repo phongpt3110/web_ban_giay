@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (empty($_GET['id'])) {
                     echo '
                         <div class="d-flex justify-content-end">
-                            <a href="index.php?do=doimatkhau" class="text-warning w-20 ">
+                            <a href=" index.php?do=doimatkhau" class="change_pass w-20 ">
                                 ĐỔI MẬT KHẨU</a>
                         </div>
                     ';

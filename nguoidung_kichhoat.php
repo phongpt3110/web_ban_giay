@@ -10,7 +10,7 @@ if (isset($_GET['quyen'])) {
     }
 
     if ($danhsach) {
-        // header("Location: index.php?do=nguoidung");
+        //header("Location: index.php?do=nguoidung");
         ThongBao("Bạn đã chỉnh sửa quyền của thành công!!!");
         echo '<script>
             window.location.href = "index.php?do=nguoidung";

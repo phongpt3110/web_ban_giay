@@ -35,7 +35,7 @@ include_once "thuvien.php";
                         style="width: 100px; height: 100px;" /></a>
             </div>
             <!-- Tạo khung search -->
-            <div id="search" class="input-group input-group-md me-2 mt-2">
+            <div id="search" class="input-group input-group-m mt-2">
                 <input type="text" class="form-control" placeholder="Search">
                 <button class="btn btn-success" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -46,7 +46,7 @@ include_once "thuvien.php";
                 <i class="icon-header fa-solid fa-user-gear me-2"></i>
                 <!-- Đăng nhập, đăng ký, đăng xuất -->
                 <div class="dropdown">
-                    <button type="button" class="border-0 bg_primary text-white dropdown-toggle"
+                    <button type="button" class="border-0 bg_primary text-white dropdown-toggle p-0"
                         data-bs-toggle="dropdown">
                         <?php
                         // Đặt mặt định là "Tài khoản"
@@ -89,9 +89,23 @@ include_once "thuvien.php";
             </div>
             <!-- Giỏ hàng -->
             <div id="cart" class="me-2 mt-2">
-                <a href="#">
+                <!-- Tạo ra menu bên phải của giỏ hàng -->
+                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#demo">
                     <i class="icon-header fa-solid fa-cart-flatbed"></i>
+                    <span class="badge">0</span>
                 </a>
+                <!-- Hiển thị menu giở hàng -->
+                <div class="offcanvas offcanvas-end offcanvas-lg bg-white" id="demo">
+                    <div class="offcanvas-header">
+                        <h1 class="offcanvas-title">GIỎ HÀNG</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <p>Some text lorem ipsum.</p>
+                        <p>Some text lorem ipsum.</p>
+                        <p>Some text lorem ipsum.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -100,7 +114,8 @@ include_once "thuvien.php";
     <div class="container mt-5">
         <div class="row">
             <?php
-            if (!isset($_SESSION['QuyenHan'])) {
+            // Nếu chưa đăng nhập or tài khoản khách hàng
+            if (!isset($_SESSION['QuyenHan']) || $_SESSION['QuyenHan'] == 1) {
                 // Kiểm tra nếu trang chưa đăng nhập
                 echo '<div class="col-md-12">';
                 $do = isset($_GET["do"]) ? $_GET["do"] : "home";
@@ -110,15 +125,15 @@ include_once "thuvien.php";
                     include $do . ".php";
                 echo '</div> ';
             } else {
-                // ------------------ Trang đã đăng nhập ---------------------------------
-                // Hiển thị cột trái
-                echo '<div class="col-md-3">';
-                echo '<nav class="d-block">
-                            <div class="mt-3 col-md-12 ">
-                                <ul class="nav flex-column nav-list ">
-                                    <h4 class="bg_primary text-white p-2 m-0">QUẢN LÝ</h4>';
-                // Nếu quyền hạn nhân viên và admin
-                if ($_SESSION['QuyenHan'] == 1 || $_SESSION['QuyenHan'] == 0) {
+                // Nếu quyền hạn admin
+                if ($_SESSION['QuyenHan'] == 0) {
+                    // ------------------ Trang đã đăng nhập ---------------------------------
+                    // Hiển thị cột trái
+                    echo '<div class="col-md-3">';
+                    echo '<nav class="d-block">
+                                <div class="mt-3 col-md-12 ">
+                                    <ul class="nav flex-column nav-list ">
+                                        <h4 class="bg_primary text-white p-2 m-0">QUẢN LÝ</h4>';
                     echo '<li class="nav-item">
                             <a class="nav-link" href="index.php?do=sanpham_them">
                                 <span>
@@ -127,9 +142,6 @@ include_once "thuvien.php";
                                 </span>
                             </a>
                         </li>';
-                }
-                // Nếu quyền hạn admin
-                if ($_SESSION['QuyenHan'] == 0) {
                     echo '<li class="nav-item">
                                 <a class="nav-link" href="index.php?do=sanpham">
                                     <span>
@@ -155,31 +167,31 @@ include_once "thuvien.php";
                                 </a>
                             </li>';
                 }
-                // Menu khách hàng
-                if ($_SESSION['QuyenHan'] == 2) {
-                    echo '<li class="nav-item">
-                                <a class="nav-link" href="index.php?do=dssanpham_khachhang&id=' . $_SESSION['MaNguoiDung'] . '">
-                                    <span>
-                                        <i class="icon-nav fa-solid fa-eye"></i>
-                                        SẢN PHẨM
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.php?do=giohang_xem&id=' . $_SESSION['MaNguoiDung'] . '">
-                                    <span>
-                                        <i class="icon-nav fa-solid fa-cart-shopping"></i>
-                                        GIỎ HÀNG
-                                    </span>
-                                </a>
-                            </li>';
-                }
                 echo '</ul>';
                 echo '</div>';
-
+                // // Menu khách hàng
+                // if ($_SESSION['QuyenHan'] == 1) {
+                //     echo '<li class="nav-item">
+                //                 <a class="nav-link" href="index.php?do=dssanpham_khachhang&id=' . $_SESSION['MaNguoiDung'] . '">
+                //                     <span>
+                //                         <i class="icon-nav fa-solid fa-eye"></i>
+                //                         SẢN PHẨM
+                //                     </span>
+                //                 </a>
+                //             </li>
+                //             <li class="nav-item">
+                //                 <a class="nav-link" href="index.php?do=giohang_xem&id=' . $_SESSION['MaNguoiDung'] . '">
+                //                     <span>
+                //                         <i class="icon-nav fa-solid fa-cart-shopping"></i>
+                //                         GIỎ HÀNG
+                //                     </span>
+                //                 </a>
+                //             </li>';
+                // }
+            
                 //Hiện menu cá nhân
-                if (isset($_SESSION['HoTen'])) {
-                    // Nếu quyền hạn là admin, nhân viên, khach hang
+                // if (isset($_SESSION['HoTen'])) { Điều chỉnh lại khác hàng
+                if ($_SESSION['QuyenHan'] == 0) {
                     echo '  <div class=" mt-3 col-md-12 ">
                             <ul class="nav flex-column  nav-list">
                                 <h4 class=" bg_primary text-white p-2 m-0">CÁ NHÂN</h4>

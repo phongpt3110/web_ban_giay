@@ -45,13 +45,28 @@ body {
 }
 
 /* Giỏ hàng  */
+#cart a {
+  position: relative;
+}
 .icon-header {
   font-size: 30px;
   display: block;
+  /* Đặt hiệu ứng  */
+  transition: transform 0.3s ease;
 }
 
-.icon-header:hover {
-  color: var(--secondary-color);
+.badge {
+  position: absolute;
+  top: -10px;
+  right: -14px;
+  color: #fff;
+  background-color: var(--color-danger);
+}
+
+.icon-header:hover,
+.dropdown:hover,
+.icon-header:hover + .badge {
+  opacity: 0.8;
   transform: translate(-2px);
 }
 
@@ -145,7 +160,8 @@ footer ul li:hover {
   display: block;
   box-sizing: border-box;
   width: 90%;
-  max-height: 200px;
+  height: 200px;
+  object-fit: cover;
   filter: drop-shadow(0 10px 5px #61616199);
   margin: auto;
   border-radius: 10px;
@@ -173,17 +189,32 @@ footer ul li:hover {
   padding: 4px 0;
 }
 
-#img-products .price {
+.price {
   padding: 4px 0;
   text-decoration: line-through;
   color: darkgray;
 }
-#img-products .price-sale {
+.price-sale {
   color: var(--secondary-color);
 }
 
 #img-products .btn {
   padding: 4px 10px;
+}
+
+/* Sản phẩm chi tiết */
+#detail-products .img-view {
+  object-fit: scale-down;
+  height: 350px;
+}
+#detail-products .describe {
+  font-weight: 500;
+  font-size: medium;
+  font-style: italic;
+}
+#detail-products p span {
+  margin-left: 8px;
+  font-size: large;
 }
 
 /* -----------------------------From đăng nhập------------------------------ */
@@ -242,6 +273,10 @@ footer ul li:hover {
   background-color: #1b9c85;
 }
 
+#detail-products img {
+  width: 100%;
+}
+
 /* ----------------------------------Responsive-------------------------- */
 @media only screen and (max-width: 768px) {
   #fromRegis .box-area {
@@ -271,6 +306,16 @@ footer ul li:hover {
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
+  border-radius: 10px;
   cursor: pointer;
   z-index: 5;
+}
+
+/* Đổi mật khẩu */
+.change_pass {
+  color: var(--color-danger);
+}
+
+.change_pass:hover {
+  text-decoration: underline;
 }
