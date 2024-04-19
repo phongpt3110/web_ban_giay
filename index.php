@@ -74,14 +74,14 @@ include_once "thuvien.php";
                             Đăng xuất</a></li>';
                         } else {
                             // Hiển thị from đăng nhập
+                            echo '<li><a class="dropdown-item" href="index.php?do=dangnhap">
+                                        <i class="fa-solid fa-user-check" style="color: #0f3057;"></i>
+                                        Đăng nhập</a></li>';
+                            // Hiển thị from đăng ký
                             echo '<li><a class="dropdown-item" href="index.php?do=dangky">
                                         <i class="fa-solid fa-user-pen" style="color: #0f3057;"></i>
                                         Đăng ký</a>
                                 </li>';
-                            // Hiển thị from đăng nhập
-                            echo '<li><a class="dropdown-item" href="index.php?do=dangnhap">
-                                        <i class="fa-solid fa-user-check" style="color: #0f3057;"></i>
-                                        Đăng nhập</a></li>';
                         }
                         ?>
                     </ul>
@@ -184,7 +184,7 @@ include_once "thuvien.php";
                             <ul class="nav flex-column  nav-list">
                                 <h4 class=" bg_primary text-white p-2 m-0">CÁ NHÂN</h4>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php?do=hosocanhan">
+                                    <a class="nav-link" href="index.php?do=nguoidung_hoso">
                                         <span>
                                             <i class="icon-nav fa-solid fa-address-card"></i>
                                             HỒ SƠ

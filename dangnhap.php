@@ -1,11 +1,16 @@
 <script>
-    function showPass() {
-        var matKhau = document.getElementsByName('MatKhau')[0];
+    function togglePassword() {
+        const matkhau = document.getElementById('password');
+        const icon = document.querySelector('.password-toggle');
 
-        if (matKhau.type === 'password') {
-            matKhau.type = 'text';
+        if (matkhau.type === "password") {
+            matkhau.type = "text";
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
         } else {
-            matKhau.type = 'password';
+            matkhau.type = "password";
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
         }
     }
 </script>
@@ -47,30 +52,23 @@
                         </div>
                         <!-- Nhập password -->
                         <div class="input-group mb-1">
-                            <input type="password" name="MatKhau" class="form-control form-control-lg bg-light fs-6"
-                                placeholder="Password">
+                            <input type="password" id="password" name="MatKhau"
+                                class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                            <i class="password-toggle fas fa-eye-slash" onclick="togglePassword()"></i>
                         </div>
-                        <!-- Hiển thị mật khẩu -->
-                        <div class="input-group mb-5 d-flex justify-content-between">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="formCheck" onclick="showPass()">
-                                <label for="formCheck" class="form-check-label text-secondary"><small>Hiển thị mật
-                                        khẩu</small></label>
-                            </div>
-                            <!-- Quên mật khẩu -->
-                            <div class="forgot">
-                                <small><a href="#">Quên mật khẩu?</a></small>
-                            </div>
+                        <!-- Quên mật khẩu -->
+                        <div class="input-group my-3 forgot">
+                            <small><a href="#">Quên mật khẩu?</a></small>
                         </div>
-                        <!-- Bấm đăng nhập -->
-                        <div class="input-group mb-3">
-                            <input type="submit" name="Submit" class="btn btn-lg btn-primary w-100 fs-6"
-                                value="ĐĂNG NHẬP" />
-                        </div>
-                    </form>
                 </div>
+                <!-- Bấm đăng nhập -->
+                <div class="input-group mb-3">
+                    <input type="submit" name="Submit" class="btn btn-lg btn-primary w-100 fs-6" value="ĐĂNG NHẬP" />
+                </div>
+                </form>
             </div>
         </div>
+    </div>
     </div>
 
 </body>

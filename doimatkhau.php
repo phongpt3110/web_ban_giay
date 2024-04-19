@@ -13,7 +13,7 @@
             <label for="confirm_password">Xác nhận mật khẩu mới:</label><br>
             <input type="password" id="confirm_password" name="confirm_password"><br><br>
 
-            <input type="submit" value="Đổi mật khẩu">
+            <input type="submit" value="Cập nhật mật khẩu">
         </form>
     </body>
 
