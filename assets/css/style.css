@@ -330,3 +330,8 @@ footer ul li:hover {
   object-fit: contain;
   border-radius: 10px;
 }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  color: var(--primary-color);
+}

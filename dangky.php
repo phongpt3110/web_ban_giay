@@ -1,9 +1,9 @@
-
 <!-- from đăng nhập -->
 <!DOCTYPE html>
 <html lang="en">
+
 <body>
-    
+
     <!-- Thiết kế from đăng nhập -->
     <div id="fromRegis" class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="row border rounded-5 p-4 bg-white shadow box-area">
@@ -36,12 +36,12 @@
                         <!-- Nhập password -->
                         <div class="input-group mb-3">
                             <input type="password" name="XacNhanMatKhau"
-                                class="form-control form-control-lg bg-light fs-6" 
-                                placeholder="Xác nhận mật khẩu">
+                                class="form-control form-control-lg bg-light fs-6" placeholder="Xác nhận mật khẩu">
                         </div>
-                        <!-- Địa chỉ --> 
+                        <!-- Địa chỉ -->
                         <div class=" input-group mb-3">
-                            <input type="text" name="DiaChi" class="form-control form-control-lg bg-light fs-6" placeholder="Địa chỉ">
+                            <input type="text" name="DiaChi" class="form-control form-control-lg bg-light fs-6"
+                                placeholder="Địa chỉ">
                         </div>
                         <!-- Bấm đăng nhập -->
                         <div class="input-group mb-3">
@@ -69,7 +69,7 @@
         </div>
 
     </div>
-    
-</body>
-</html>
 
+</body>
+
+</html>

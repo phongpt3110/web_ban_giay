@@ -19,34 +19,33 @@
 
                 <!-- . Hiệu ứng slide 2.Tự động chuyển trang 3. Đặt thời gian 4.Dừng khi hover 5. Chuyển vòng lặp 6. Cho phép nhắn bàn phím -->
                 <div id="carouselControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
-                    data-bs-pause="hover" data-bs-wrap="true" data-bs-keyboard="true" data-bs-touch="true">
+                    data-bs-pause="hover" data-bs-wrap="true" data-bs-keyboard="true" data-bs-touch="true"
+                    data-bs-rtl="true">
                     <!-- Hiển thị hình ảnh -->
                     <div class="carousel-inner">
+                        <div class="carousel-item">
+                            <img src="./assets/images/conver_white_low.jpg" class="d-block" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assets/images/converse_1970s.jpg" class="d-block" alt="...">
+                        </div>
                         <div class="carousel-item active">
-                            <img src="./assets/images/conver_white_low.jpg" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./assets/images/converse_1970s.jpg" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./assets/images/converse_1970s_white.jpg" alt="...">
+                            <img src="./assets/images/converse_1970s_white.jpg" class="d-block" alt="...">
                         </div>
                     </div>
                     <!-- Nút chuyển về trước -->
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls"
                         data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <i class="fa-solid fa-angles-left fa-2xl" style="color: #0f3057;"></i>
                         <span class="visually-hidden">Previous</span>
                     </button>
                     <!-- Nút chuyển về sau  -->
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselControls"
                         data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <i class="fa-solid fa-angles-right fa-2xl" style="color: #0f3057;"></i>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-
-
 
             </div>
             <!-- Khung sản phẩm -->
