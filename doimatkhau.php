@@ -18,35 +18,59 @@
     </body>
 
     <?php
-        // Kiểm tra xem dữ liệu được gửi từ form chưa
+        
+        // Thực hiện kết nối đến cơ sở dữ liệu
+        try {
+            $pdo = new PDO('mysql:host=localhost;dbname=your_database', 'your_username', 'your_password');
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die("Lỗi kết nối đến cơ sở dữ liệu: " . $e->getMessage());
+        }
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Lấy dữ liệu từ form
             $old_password = $_POST["old_password"];
             $new_password = $_POST["new_password"];
             $confirm_password = $_POST["confirm_password"];
 
-            // Kiểm tra xem mật khẩu mới và xác nhận mật khẩu mới có khớp nhau không
+            // Kiểm tra xác nhận mật khẩu mới
             if ($new_password != $confirm_password) {
                 echo "Mật khẩu mới và xác nhận mật khẩu mới không khớp nhau.";
             } else {
-                // Kiểm tra xem mật khẩu cũ có đúng không (trong trường hợp này, chúng ta giả định mật khẩu cũ đã được lưu trữ trong cơ sở dữ liệu)
-                $stored_old_password = "hashed_password"; // Thay bằng mật khẩu cũ đã được mã hóa
+                // Kiểm tra xác nhận mật khẩu cũ
+                $username = "client"; // Thay bằng tên đăng nhập của người dùng
+                $sql = "SELECT MatKhau FROM nguoidung WHERE TenDangNhap = :username";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(['username' => $username]);
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                if ($old_password != $stored_old_password) {
-                    echo "Mật khẩu cũ không đúng.";
+                if (!$row) {
+                    echo "Người dùng không tồn tại.";
                 } else {
-                    // Mật khẩu cũ đúng, thực hiện đổi mật khẩu (trong trường hợp này, chúng ta giả định cập nhật mật khẩu mới vào cơ sở dữ liệu)
-                    $stored_new_password = password_hash($new_password, PASSWORD_DEFAULT); // Mã hóa mật khẩu mới
+                    // So sánh mật khẩu cũ
+                    $stored_password = $row['MatKhau'];
+                    if (!password_verify($old_password, $stored_password)) {
+                        echo "Mật khẩu cũ không đúng.";
+                    } else {
+                        // Mật khẩu cũ đúng, thực hiện đổi mật khẩu
+                        $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
 
-                    // Cập nhật mật khẩu mới vào cơ sở dữ liệu
-                    // Ví dụ:
-                    // $sql = "UPDATE users SET password='$stored_new_password' WHERE user_id=1";
-                    // Thực thi truy vấn SQL...
-                    
-                    echo "Đổi mật khẩu thành công.";
+                        // Cập nhật mật khẩu mới vào cơ sở dữ liệu
+                        $sql = "UPDATE nguoidung SET MatKhau = :new_password WHERE TenDangNhap = :username";
+                        $stmt = $pdo->prepare($sql);
+                        $stmt->execute(['new_password' => $hashed_new_password, 'username' => $username]);
+
+                        echo "Đổi mật khẩu thành công.";
+                    }
                 }
             }
         }
+
+        // Đóng kết nối
+        $pdo = null;
+
     ?>
+
+
 
 </html>

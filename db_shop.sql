@@ -109,6 +109,9 @@ VALUES
     (2, 0, 'Phước Tuy', 'tuy', MD5 ('tuy'), 'An Giang', 0, 'tuy_dth216232@student.agu.edu.vn'),
     (3, 1, 'Client', 'client', MD5 ('client'), 'Cần Thơ', 0, 'client@example.com');
 
+UPDATE `nguoidung` SET `MatKhau` = MD5('new_password') WHERE `TenDangNhap` = 'username';
+
+
 CREATE TABLE
     `nhasanxuat` (
         `IdNSX` int (20) NOT NULL AUTO_INCREMENT,
