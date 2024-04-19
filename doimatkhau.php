@@ -18,15 +18,7 @@
     </body>
 
     <?php
-        
-        // Thực hiện kết nối đến cơ sở dữ liệu
-        try {
-            $pdo = new PDO('mysql:host=localhost;dbname=your_database', 'your_username', 'your_password');
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            die("Lỗi kết nối đến cơ sở dữ liệu: " . $e->getMessage());
-        }
-
+        // Kiểm tra xem dữ liệu được gửi từ form chưa
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Lấy dữ liệu từ form
             $old_password = $_POST["old_password"];

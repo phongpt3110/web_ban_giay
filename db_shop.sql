@@ -42,7 +42,7 @@ CREATE TABLE
 -- Dumping data for table `danhsach`
 --
 INSERT INTO
-    `danhsach` (`MaSP`, `TenSP`, `IdNXS`, `Gia`, `TiLeGiam`, `SoLuong`, `MoTa`, `AnhSP`, `LuotXem`)
+    `danhsach` (`MaSP`, `TenSP`, `IdNSX`, `Gia`, `TiLeGiam`, `SoLuong`, `MoTa`, `AnhSP`, `LuotXem`)
 VALUES
     (1, 'CONVERSE WHITE LOW', 2, 1200000, 0, 12, '', './assets/images/conver_white_low.jpg', 0),
     (2, 'CONVERSE 1970s ', 2, 1000000, 0, 8, '', './assets/images/converse_1970s.jpg', 0),
@@ -103,14 +103,11 @@ CREATE TABLE
 -- Dumping data for table `nguoidung`
 --
 INSERT INTO
-    `nguoidung` (`MaNguoiDung`, `QuyenHan`, `TenNguoiDung`, `TenDangNhap`, `MatKhau`, `DiaChi`, `Khoa`, 'Email')
+    `nguoidung` (`MaNguoiDung`, `QuyenHan`, `TenNguoiDung`, `TenDangNhap`, `MatKhau`, `DiaChi`, `Khoa`)
 VALUES
-    (1, 0, 'Thành Phong', 'phong', MD5 ('phong'), 'An Giang', 0, 'phong_dth216083@student.agu.edu.vn'),
-    (2, 0, 'Phước Tuy', 'tuy', MD5 ('tuy'), 'An Giang', 0, 'tuy_dth216232@student.agu.edu.vn'),
-    (3, 1, 'Client', 'client', MD5 ('client'), 'Cần Thơ', 0, 'client@example.com');
-
-UPDATE `nguoidung` SET `MatKhau` = MD5('new_password') WHERE `TenDangNhap` = 'username';
-
+    (1, 0, 'Thành Phong', 'phong', MD5 ('phong'), 'An Giang', 0),
+    (2, 0, 'Phước Tuy', 'tuy', MD5 ('tuy'), 'An Giang', 0),
+    (3, 1, 'Client', 'client', MD5 ('client'), 'Cần Thơ', 0);
 
 CREATE TABLE
     `nhasanxuat` (

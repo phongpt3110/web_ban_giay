@@ -17,17 +17,12 @@
                             KÝ</h2>
                     </div>
                     <!-- From đăng nhập -->
-                    <form action="index.php?do=dangky_xuly" method="post">
+                    <form action="" method="">
                         <!-- Nhập tên hiển thị -->
                         <div class="mb-3 mt-3">
                             <label for="email" class="form-label"></label>
                             <input type="email" class="form-control" id="email" placeholder="Nhập Email" name="email">
                         </div>
-                        <div class="input-group mb-3">
-                            <input type="text" name="TenNguoiDung" class="form-control form-control-lg bg-light fs-6"
-                                placeholder="Tên người dùng">
-                        </div>
-
                         <!-- Nhập tên tài khoản -->
                         <div class="input-group mb-3">
                             <input type="text" name="TenDangNhap" class="form-control form-control-lg bg-light fs-6"
@@ -40,16 +35,13 @@
                         </div>
                         <!-- Nhập password -->
                         <div class="input-group mb-3">
-                            <input type="password" name="MatKhauXacNhan"
-                                class="form-control form-control-lg bg-light fs-6" placeholder="Xác nhận mật khẩu">
+                            <input type="password" name="XacNhanMatKhau"
+                                class="form-control form-control-lg bg-light fs-6" 
+                                placeholder="Xác nhận mật khẩu">
                         </div>
-                        <!-- Hiển thị mật khẩu -->
-                        <div class="input-group mb-3 d-flex justify-content-between">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="formCheck">
-                                <label for="formCheck" class="form-check-label text-secondary"><small>Hiển thị mật
-                                        khẩu</small></label>
-                            </div>
+                        <!-- Địa chỉ --> 
+                        <div class=" input-group mb-3">
+                            <input type="text" name="DiaChi" class="form-control form-control-lg bg-light fs-6" placeholder="Địa chỉ">
                         </div>
                         <!-- Bấm đăng nhập -->
                         <div class="input-group mb-3">
@@ -71,9 +63,11 @@
                     style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Bạn đã là thành viên!</small>
                 <button type="button" class="btn btn-md btn-outline-light rounded-2 mt-2"><a
                         href="index.php?do=dangnhap"> ĐĂNG NHẬP
-                    </a></button>
+                    </a>
+                </button>
             </div>
         </div>
+
     </div>
     
 </body>
