@@ -1,21 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <body>
-        <h2>Đổi mật khẩu</h2>
-        <form action="change_password.php" method="post">
-            <label for="old_password">Mật khẩu cũ:</label><br>
-            <input type="password" id="old_password" name="old_password"><br><br>
-
-            <label for="new_password">Mật khẩu mới:</label><br>
-            <input type="password" id="new_password" name="new_password"><br><br>
-
-            <label for="confirm_password">Xác nhận mật khẩu mới:</label><br>
-            <input type="password" id="confirm_password" name="confirm_password"><br><br>
-
-            <input type="submit" value="Cập nhật mật khẩu">
-        </form>
-    </body>
 
     <?php
         // Kiểm tra xem dữ liệu được gửi từ form chưa
