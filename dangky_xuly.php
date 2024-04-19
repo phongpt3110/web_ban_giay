@@ -39,7 +39,7 @@
 					ThongBao("Đăng ký thành công!");
 					echo '
 						<script>
-						window.location.href = "index.php";
+							window.location.href = "index.php";
 						</script>
 						';
 				} else {
