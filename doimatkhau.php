@@ -1,46 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-
-
 <?php
-// Kiểm tra xem dữ liệu được gửi từ form chưa
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Lấy dữ liệu từ form
-    $old_password = $_POST["old_password"];
-    $new_password = $_POST["new_password"];
-    $confirm_password = $_POST["confirm_password"];
 
-    // Kiểm tra xác nhận mật khẩu mới
-    if ($new_password != $confirm_password) {
-        echo "Mật khẩu mới và xác nhận mật khẩu mới không khớp nhau.";
-    } else {
-        // Kiểm tra xác nhận mật khẩu cũ
-        $username = "client"; // Thay bằng tên đăng nhập của người dùng
-        $sql = "SELECT MatKhau FROM nguoidung WHERE TenDangNhap = :username";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(['username' => $username]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    //Lấy dữ liệu
+    $maNguoiDung = $_POST['MaNguoiDung'];
+    $oldMatKhau = $_POST['MatKhauCu'];
+    $newMatKhau = $_POST['MatKhauMoi'];
+    $XacNhanMatKhau = $_POST['XacNhanMatKhau'];
 
-        if (!$row) {
-            echo "Người dùng không tồn tại.";
-        } else {
-            // So sánh mật khẩu cũ
-            $stored_password = $row['MatKhau'];
-            if (!password_verify($old_password, $stored_password)) {
-                echo "Mật khẩu cũ không đúng.";
-            } else {
-                // Mật khẩu cũ đúng, thực hiện đổi mật khẩu
-                $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
-
-                // Cập nhật mật khẩu mới vào cơ sở dữ liệu
-                $sql = "UPDATE nguoidung SET MatKhau = :new_password WHERE TenDangNhap = :username";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute(['new_password' => $hashed_new_password, 'username' => $username]);
-
-                echo "Đổi mật khẩu thành công.";
-            }
-        }
+    // Lấy dữ liệu mật khẩu cũ để so sánh
+    $sql = "SELECT `MatKhau` FROM  `nguoidung` WHERE MaNguoiDung = '$maNguoiDung'";
+    $ds = $connect->query($sql);
+    if (!$ds) {
+        BaoLoi("Không thể thực hiện câu lệnh SQL: " . $connect->connect_error);
+        exit();
     }
+
+    $dong = $ds->fetch_array(MYSQLI_ASSOC);
+    if (md5($oldMatKhau) != $dong['MatKhau'])
+        BaoLoi("Nhập mật khẩu của bạn không đúng!");
+    elseif ($newMatKhau != $XacNhanMatKhau)
+        BaoLoi("Xác nhận mật khẩu không đúng!");
+    else {
+        //Cập nhật dữ liệu
+        //Mã hóa MD5
+        $newMatKhau = md5($newMatKhau);
+        $updateSql = "UPDATE `nguoidung` SET MatKhau ='$newMatKhau' WHERE MaNguoiDung = '$maNguoiDung' ";
+
+        if ($connect->query($updateSql) === TRUE) {
+            ThongBao("Cập nhật mật khẩu thành công.");
+        } else {
+            BaoLoi('Lỗi khi cập nhật mật khẩu: ' . $connect->error);
+        }
+
+    }
+
 }
 
 ?>
@@ -49,19 +43,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     function togglePassword() {
         const MatKhau = document.getElementById('password');
         const MatKhauMoi = document.getElementById('passwordNew');
-        const MatKhauXacNhan = document.getElementById('passwordValid');
+        const XacNhanMatKhau = document.getElementById('passwordValid');
         const icon = document.querySelector('.password-toggle');
 
-        if (MatKhauXacNhan.type === "password") {
+        if (XacNhanMatKhau.type === "password") {
             MatKhau.type = "text";
             MatKhauMoi.type = "text";
-            MatKhauXacNhan.type = "text";
+            XacNhanMatKhau.type = "text";
             icon.classList.remove('fa-eye-slash');
             icon.classList.add('fa-eye');
         } else {
             MatKhau.type = "password";
             MatKhauMoi.type = "password";
-            MatKhauXacNhan.type = "password";
+            XacNhanMatKhau.type = "password";
             icon.classList.remove('fa-eye');
             icon.classList.add('fa-eye-slash');
         }
@@ -77,22 +71,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h2 class="title text-center fs-2">ĐỔI MẬT KHẨU</h2>
                 </div>
                 <!-- From đổi mật khẩu -->
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                     <!-- Ẩn mã người dùng -->
                     <input type="hidden" name="MaNguoiDung" value="<?php echo $_SESSION['MaNguoiDung']; ?>" />
                     <!-- Cập nhật tên người dùng -->
                     <div class="form-floating mb-3 ">
-                        <input type="password" class="form-control" id="password" name="old_password" required>
+                        <input type="password" class="form-control" id="password" name="MatKhauCu" required>
                         <label for="password">MẬT KHẨU</label>
                     </div>
                     <!--Cập nhật tên đăng nhập -->
                     <div class="form-floating mb-3 ">
-                        <input type="password" class="form-control" id="passwordNew" name="new_password" required>
+                        <input type="password" class="form-control" id="passwordNew" name="MatKhauMoi" required>
                         <label for="passwordNew">MẬT KHẨU MỚI</label>
                     </div>
                     <!-- Cập nhật tỉ lệ giảm giá -->
                     <div class="form-floating mb-3 ">
-                        <input type="password" id="passwordValid" class="form-control" name="confirm_password">
+                        <input type="password" id="passwordValid" class="form-control" name="XacNhanMatKhau">
                         <i class="password-toggle fas fa-eye-slash" onclick="togglePassword()"></i>
                         <label for="passwordValid">XÁC NHẬN MẬT KHẨU</label>
                     </div>
@@ -102,11 +96,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             value="ĐỔI MẬT KHẨU" />
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
 </div>
-
-
-
-</html>
