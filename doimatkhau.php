@@ -19,7 +19,7 @@
 
     <?php
         // Kiểm tra xem dữ liệu được gửi từ form chưa
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["change_password.php"] == "post") {
             // Lấy dữ liệu từ form
             $old_password = $_POST["old_password"];
             $new_password = $_POST["new_password"];

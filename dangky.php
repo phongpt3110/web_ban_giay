@@ -22,6 +22,10 @@
                             <label for="email" class="form-label">Email:</label>
                             <input type="email" class="form-control" id="email" placeholder="Nhập Email" name="email">
                         </div>
+
+                        <div class="input-group mb-3">
+                            <input type="text" name="HoVaTen" class="form-control form-control-lg bg-light fs-6"
+                                placeholder="Họ và tên">
                         <!-- Nhập tên tài khoản -->
                         <div class="input-group mb-3">
                             <input type="text" name="TenDangNhap" class="form-control form-control-lg bg-light fs-6"
@@ -34,8 +38,13 @@
                         </div>
                         <!-- Nhập password -->
                         <div class="input-group mb-3">
-                            <input type="password" name="MatKhauXacNhan"
+                            <input type="password" name="XacNhanMatKhau"
                                 class="form-control form-control-lg bg-light fs-6" placeholder="Xác nhận mật khẩu">
+                        </div>
+                        <!-- Địa chỉ --> 
+                        <div class="mb-3">
+                            <label for="street" class="form-label"></label>
+                            <input type="text" id="street" name="street" class="form-control" placeholder="Địa chỉ">
                         </div>
                         <!-- Hiển thị mật khẩu -->
                         <div class="input-group mb-3 d-flex justify-content-between">
@@ -68,6 +77,7 @@
                     </a></button>
             </div>
         </div>
+
     </div>
 
 </body>

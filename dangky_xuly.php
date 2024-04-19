@@ -1,43 +1,47 @@
 <?php
 	// Lấy thông tin từ FORM
-	$Email = $_POST['Email'];
+	$QuyenHan = 1;
+	$HoVaTen = $_POST['HoVaTen'];
 	$TenDangNhap = $_POST['TenDangNhap'];
 	$MatKhau = $_POST['MatKhau'];
 	$XacNhanMatKhau = $_POST['XacNhanMatKhau'];
 	
 	// Kiểm tra
-	if(trim($Email) == "")
-		BaoLoi("Email không được bỏ trống!");
+	 if(trim($HoVaTen) == "")
+		 ThongBaoLoi("Họ và tên không được bỏ trống!");
 	elseif(trim($TenDangNhap) == "")
-		BaoLoi("Tên đăng nhập không được bỏ trống!");
+		ThongBaoLoi("Tên đăng nhập không được bỏ trống!");
 	elseif(trim($MatKhau) == "")
-		BaoLoi("Mật khẩu không được bỏ trống!");
+		ThongBaoLoi("Mật khẩu không được bỏ trống!");
 	elseif($MatKhau != $XacNhanMatKhau)
-		BaoLoi("Xác nhận mật khẩu không đúng!");
+		ThongBaoLoi("Xác nhận mật khẩu không đúng!");
 	else
 	{
 		// Kiểm tra người dùng đã tồn tại chưa
-		$sql_kiemtra = "SELECT * FROM tbl_nguoidung WHERE TenDangNhap = '$TenDangNhap'";
+		$sql_kiemtra = "SELECT * FROM nguoidung WHERE TenDangNhap = '$TenDangNhap'";
 		
 		$danhsach = $connect->query($sql_kiemtra);
 		
 		if($danhsach)
 		{
-			// Mã hóa mật khẩu
-			$MatKhau = md5($MatKhau);
-			
-			$sql_them = "INSERT INTO `tbl_nguoidung`(`Email`, `TenDangNhap`, `MatKhau`, `QuyenHan`, `Khoa`)
-					VALUES ('$Email', '$TenDangNhap', '$MatKhau', 2, 0)";
-			$themnd = $connect->query($sql_them);
-			
-			if($themnd)
-				BaoLoi("Đăng ký thành công!");
-			else
-				BaoLoi(mysql_error());
+			if ($danhsach->num_rows > 0) {
+				ThongBaoLoi("Người dùng với tên đăng nhập đã được sử dụng!");
+			} else {
+				// Thêm người dùng
+				$sql_them_nd = "INSERT INTO `nguoidung`(`QuyenHan`,`TenNguoiDung`, `TenDangNhap`, `MatKhau`,`DiaChi`, `Khoa`)
+						VALUES ('$QuyenHan', '$HoVaTen', '$TenDangNhap', '$MatKhau', 0)";
+				$themnd = $connect->query($sql_them_nd);
+				
+				if($themnd) {
+					ThongBaoLoi("Đăng ký thành công!");
+				} else {
+					ThongBao('Đã xảy ra lỗi khi thêm dữ liệu vào CSDL!');
+				}
+			}
 		}
 		else
 		{
-			BaoLoi("Người dùng với tên đăng nhập đã được sử dụng!");
+			ThongBaoLoi("Đã xảy ra lỗi khi kiểm tra người dùng!");
 		}
 	}
 ?>

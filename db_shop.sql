@@ -91,7 +91,7 @@ CREATE TABLE
         `MaNguoiDung` int (10) NOT NULL AUTO_INCREMENT,
         `QuyenHan` int (1) NOT NULL,
         /*`TenNguoiDung` varchar(50) COLLATE utf8_unicode_ci NOT NULL,*/
-        'Email' varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+        `Email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
         `TenDangNhap` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
         `MatKhau` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
         `DiaChi` text COLLATE utf8_unicode_ci NOT NULL,
@@ -103,7 +103,7 @@ CREATE TABLE
 -- Dumping data for table `nguoidung`
 --
 INSERT INTO
-    `nguoidung` (`MaNguoiDung`, `QuyenHan`, `TenNguoiDung`, 'Email', `TenDangNhap`, `MatKhau`, `DiaChi`, `Khoa`)
+    `nguoidung` (`MaNguoiDung`, `QuyenHan`, `TenNguoiDung`, `Email`, `TenDangNhap`, `MatKhau`, `DiaChi`, `Khoa`)
 VALUES
     (1, 0, 'Thành Phong', 'phong', MD5 ('phong'), 'An Giang', 0),
     (2, 0, 'Phước Tuy', 'tuy', MD5 ('tuy'), 'An Giang', 0),
