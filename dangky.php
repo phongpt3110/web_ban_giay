@@ -26,6 +26,7 @@
                         <div class="input-group mb-3">
                             <input type="text" name="HoVaTen" class="form-control form-control-lg bg-light fs-6"
                                 placeholder="Họ và tên">
+                        </div>  
                         <!-- Nhập tên tài khoản -->
                         <div class="input-group mb-3">
                             <input type="text" name="TenDangNhap" class="form-control form-control-lg bg-light fs-6"
@@ -39,20 +40,12 @@
                         <!-- Nhập password -->
                         <div class="input-group mb-3">
                             <input type="password" name="XacNhanMatKhau"
-                                class="form-control form-control-lg bg-light fs-6" placeholder="Xác nhận mật khẩu">
+                                class="form-control form-control-lg bg-light fs-6" 
+                                placeholder="Xác nhận mật khẩu">
                         </div>
                         <!-- Địa chỉ --> 
-                        <div class="mb-3">
-                            <label for="street" class="form-label"></label>
-                            <input type="text" id="street" name="street" class="form-control" placeholder="Địa chỉ">
-                        </div>
-                        <!-- Hiển thị mật khẩu -->
-                        <div class="input-group mb-3 d-flex justify-content-between">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="formCheck">
-                                <label for="formCheck" class="form-check-label text-secondary"><small>Hiển thị mật
-                                        khẩu</small></label>
-                            </div>
+                        <div class=" input-group mb-3">
+                            <input type="text" name="DiaChi" class="form-control form-control-lg bg-light fs-6" placeholder="Địa chỉ">
                         </div>
                         <!-- Bấm đăng nhập -->
                         <div class="input-group mb-3">
@@ -74,7 +67,8 @@
                     style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Bạn đã là thành viên!</small>
                 <button type="button" class="btn btn-md btn-outline-light rounded-2 mt-2"><a
                         href="index.php?do=dangnhap"> ĐĂNG NHẬP
-                    </a></button>
+                    </a>
+                </button>
             </div>
         </div>
 

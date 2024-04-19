@@ -28,7 +28,7 @@ CREATE TABLE
     `danhsach` (
         `MaSP` int (10) NOT NULL AUTO_INCREMENT,
         `TenSP` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-        `IdNXS` int (20) NOT NULL,
+        `IdNSX` int (20) NOT NULL,
         `Gia` int (10) NOT NULL,
         `TiLeGiam` int (5),
         `SoLuong` int (11) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE
 -- Dumping data for table `danhsach`
 --
 INSERT INTO
-    `danhsach` (`MaSP`, `TenSP`, `IdNXS`, `Gia`, `TiLeGiam`, `SoLuong`, `MoTa`, `AnhSP`, `LuotXem`)
+    `danhsach` (`MaSP`, `TenSP`, `IdNSX`, `Gia`, `TiLeGiam`, `SoLuong`, `MoTa`, `AnhSP`, `LuotXem`)
 VALUES
     (1, 'CONVERSE WHITE LOW', 2, 1200000, 0, 12, '', './assets/images/conver_white_low.jpg', 0),
     (2, 'CONVERSE 1970s ', 2, 1000000, 0, 8, '', './assets/images/converse_1970s.jpg', 0),
@@ -90,12 +90,12 @@ CREATE TABLE
     `nguoidung` (
         `MaNguoiDung` int (10) NOT NULL AUTO_INCREMENT,
         `QuyenHan` int (1) NOT NULL,
-        /*`TenNguoiDung` varchar(50) COLLATE utf8_unicode_ci NOT NULL,*/
-        `Email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+        `TenNguoiDung` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
         `TenDangNhap` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
         `MatKhau` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
         `DiaChi` text COLLATE utf8_unicode_ci NOT NULL,
         `Khoa` tinyint (1) NOT NULL,
+        `Email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
         PRIMARY KEY (`MaNguoiDung`)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci AUTO_INCREMENT = 3;
 
@@ -103,13 +103,13 @@ CREATE TABLE
 -- Dumping data for table `nguoidung`
 --
 INSERT INTO
-    `nguoidung` (`MaNguoiDung`, `QuyenHan`, `TenNguoiDung`, `Email`, `TenDangNhap`, `MatKhau`, `DiaChi`, `Khoa`)
+    `nguoidung` (`MaNguoiDung`, `QuyenHan`, `TenNguoiDung`, `TenDangNhap`, `MatKhau`, `DiaChi`, `Khoa`, `Email`)
 VALUES
-    (1, 0, 'Thành Phong', 'phong', MD5 ('phong'), 'An Giang', 0),
-    (2, 0, 'Phước Tuy', 'tuy', MD5 ('tuy'), 'An Giang', 0),
-    (3, 1, 'Client', 'client', MD5 ('client'), 'Cần Thơ', 0);
+    (1, 0, 'Thành Phong', 'phong', MD5 ('phong'), 'An Giang', 0, 'phong_dth216083@student.agu.edu.vn'),
+    (2, 0, 'Phước Tuy', 'tuy', MD5 ('tuy'), 'An Giang', 0, 'tuy_dth216232@student.agu.edu.vn'),
+    (3, 1, 'Client', 'client', MD5 ('client'), 'Cần Thơ', 0, 'client@example.com');
 
-UPDATE `nguoidung` SET `MatKhau` = MD5('new_password') WHERE `TenDangNhap` = 'client';
+
 
 
 CREATE TABLE
@@ -118,7 +118,6 @@ CREATE TABLE
         `TenNSX` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
         PRIMARY KEY (`IdNSX`)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci AUTO_INCREMENT = 6;
-
 
 INSERT INTO
     `nhasanxuat` (`IdNSX`, `TenNSX`)
