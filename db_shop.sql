@@ -109,12 +109,16 @@ VALUES
     (2, 0, 'Phước Tuy', 'tuy', MD5 ('tuy'), 'An Giang', 0),
     (3, 1, 'Client', 'client', MD5 ('client'), 'Cần Thơ', 0);
 
+UPDATE `nguoidung` SET `MatKhau` = MD5('new_password') WHERE `TenDangNhap` = 'client';
+
+
 CREATE TABLE
     `nhasanxuat` (
         `IdNSX` int (20) NOT NULL AUTO_INCREMENT,
         `TenNSX` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
         PRIMARY KEY (`IdNSX`)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci AUTO_INCREMENT = 6;
+
 
 INSERT INTO
     `nhasanxuat` (`IdNSX`, `TenNSX`)
