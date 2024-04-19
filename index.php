@@ -118,7 +118,7 @@ include_once "thuvien.php";
             if (!isset($_SESSION['QuyenHan']) || $_SESSION['QuyenHan'] == 1) {
                 // Kiểm tra nếu trang chưa đăng nhập
                 echo '<div class="col-md-12">';
-                $do = isset($_GET["do"]) ? $_GET["do"] : "home";
+                $do = isset($_GET["do"]) ? $_GET["do"] : "home_trangtin";
                 if ($do === "dangnhap.php")
                     include "dangnhap.php";
                 else

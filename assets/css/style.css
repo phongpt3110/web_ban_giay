@@ -64,7 +64,6 @@ body {
 }
 
 .icon-header:hover,
-.dropdown:hover,
 .icon-header:hover + .badge {
   opacity: 0.8;
   transform: translate(-2px);
@@ -318,4 +317,16 @@ footer ul li:hover {
 
 .change_pass:hover {
   text-decoration: underline;
+}
+
+/* ---------------------------- Hình ảnh tự động --------------------------- */
+#carouselControls {
+  height: 400px;
+}
+
+.carousel-item img {
+  height: 400px;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 10px;
 }
