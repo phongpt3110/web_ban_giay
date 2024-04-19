@@ -42,7 +42,7 @@ CREATE TABLE
 -- Dumping data for table `danhsach`
 --
 INSERT INTO
-    `danhsach` (`MaSP`, `TenSP`, `IdNXS`, `Gia`, `TiLeGiam`, `SoLuong`, `MoTa`, `AnhSP`, `LuotXem`)
+    `danhsach` (`MaSP`, `TenSP`, `IdNSX`, `Gia`, `TiLeGiam`, `SoLuong`, `MoTa`, `AnhSP`, `LuotXem`)
 VALUES
     (1, 'CONVERSE WHITE LOW', 2, 1200000, 0, 12, '', './assets/images/conver_white_low.jpg', 0),
     (2, 'CONVERSE 1970s ', 2, 1000000, 0, 8, '', './assets/images/converse_1970s.jpg', 0),
@@ -95,6 +95,7 @@ CREATE TABLE
         `MatKhau` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
         `DiaChi` text COLLATE utf8_unicode_ci NOT NULL,
         `Khoa` tinyint (1) NOT NULL,
+        `Email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
         PRIMARY KEY (`MaNguoiDung`)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci AUTO_INCREMENT = 3;
 

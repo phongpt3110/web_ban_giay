@@ -7,5 +7,6 @@ function BaoLoi($thongbao = "")
 function ThongBao($thongbao = "")
 {
     echo "<script>alert('$thongbao');</script>";
+
 }
 ?>
