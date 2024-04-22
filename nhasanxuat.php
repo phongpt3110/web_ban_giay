@@ -28,8 +28,7 @@ if (!$ds) {
                         while ($dong = $ds->fetch_array(MYSQLI_ASSOC)) {
                             echo "<tr>";
                             echo "<td>" . $dong["IdNSX"] . "</td>";
-                            echo "<td>" . $dong["TenNSX"] . "</td>";
-
+                            echo "<td>" . $dong["TenNSX"] . "</td>";                            
                             //Sửa nhà sản xuất
                             echo "<td><a href='index.php?do=nhasanxuat_sua&id=" . $dong["IdNSX"] . "'>
                                 <i class='icon-user fa-solid fa-pen-to-square fa-xl' style='color: #cc041a;'></i></a></td>";
@@ -43,6 +42,7 @@ if (!$ds) {
                     </tbody>
                 </table>
             </div>
+            <a href="index.php?do=nhasanxuat_them" class="btn btn-success">THÊM NHÀ SẢN XUẤT</a>
         </div>
     </div>
 </div>
