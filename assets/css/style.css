@@ -44,18 +44,18 @@ body {
   font-style: italic;
 }
 
-/* Giỏ hàng  */
-#cart a {
-  position: relative;
-}
 .icon-header {
   font-size: 30px;
   display: block;
   /* Đặt hiệu ứng  */
   transition: transform 0.3s ease;
 }
+/* Giỏ hàng  */
+#cart {
+  position: relative;
+}
 
-.badge {
+#cart .badge {
   position: absolute;
   top: -10px;
   right: -14px;
@@ -82,29 +82,40 @@ a {
 
 .nav-list {
   overflow: hidden;
-  box-shadow: var(--box-shadow);
 }
-.nav-list:hover {
-  box-shadow: none;
+
+.nav-method .nav-list .nav-link {
+  text-align: center;
+}
+
+.nav-list .nav-link .icon-nav {
+  color: var(--secondary-color);
+  margin: 0 8px;
+}
+.nav-list .nav-link {
+  font-size: 12px;
+  margin-left: 2px;
+  position: relative;
+}
+.nav-list .nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: var(--primary-color);
+  transition: height 0.3s ease;
+}
+
+.nav-list .nav-link:hover::before {
+  height: 4px;
 }
 
 .nav-list .nav-link {
   background-color: #fff;
   color: var(--primary-color);
-}
-
-.nav-list .nav-link .icon-nav {
-  color: var(--secondary-color);
-  margin-right: 8px;
-}
-.nav-list .nav-link span {
-  font-size: 12px;
-  margin-left: 8px;
-  transition: margin-left 0.3s ease;
-}
-
-.nav-list .nav-link:hover span {
-  margin-left: 16px;
+  font-size: medium;
 }
 
 /* ------------------------------Footer------------------------------- */
@@ -156,6 +167,7 @@ footer ul li:hover {
 }
 
 #img-products img {
+  position: relative;
   display: block;
   box-sizing: border-box;
   width: 90%;
@@ -195,6 +207,7 @@ footer ul li:hover {
 }
 .price-sale {
   color: var(--secondary-color);
+  padding-right: 10px;
 }
 
 #img-products .btn {
@@ -289,6 +302,7 @@ footer ul li:hover {
     padding: 20px;
   }
 }
+
 /* ------- Icon người dùng-------------- */
 .icon-user {
   text-align: center;
@@ -334,4 +348,21 @@ footer ul li:hover {
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   color: var(--primary-color);
+}
+
+/* -------------------------Home trang tin ---------------------------- */
+.badge {
+  position: absolute;
+  top: 14px;
+}
+
+.badge-lg {
+  font-size: 1em; /* Điều chỉnh kích thước phù hợp */
+  padding: 0.4em 0.6em; /* Điều chỉnh lề nếu cần */
+}
+
+.view {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-dark-variant);
 }

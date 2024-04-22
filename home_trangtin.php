@@ -1,89 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+if (isset($_GET["limit_home"]) == true)
+    $_SESSION['limit_home'] += 4;
+else
+    $_SESSION['limit_home'] = 8;
+// 
+$limit_home_ok = $_SESSION['limit_home'];
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SNEAKERS</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
+$sql = "select t.MaSP, t.TenSP, t.IdNSX, t.AnhSP, t.Gia, t.SoLuong, t.MoTa, t.TiLeGiam, t.LuotXem, l.IdNSX, l.TenNSX
+    from (nhasanxuat l inner join danhsach t on t.IdNSX=l.IdNSX)
+    order by LuotXem DESC Limit 0," . $limit_home_ok;
 
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <h1>NHÀ SẢN XUẤT</h1>
-            </div>
 
-            <div class="col-md-9">
+$danhsach = $connect->query($sql);
+//Nếu kết quả kết nối không được thì xuất báo lỗi và thoát
+if (!$danhsach) {
+    die("Không thể thực hiện câu lệnh SQL: " . $connect->connect_error);
+    exit();
+}
 
-                <!-- . Hiệu ứng slide 2.Tự động chuyển trang 3. Đặt thời gian 4.Dừng khi hover 5. Chuyển vòng lặp 6. Cho phép nhắn bàn phím -->
-                <div id="carouselControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
-                    data-bs-pause="hover" data-bs-wrap="true" data-bs-keyboard="true" data-bs-touch="true"
-                    data-bs-rtl="true">
-                    <!-- Hiển thị hình ảnh -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item">
-                            <img src="./assets/images/conver_white_low.jpg" class="d-block" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="./assets/images/converse_1970s.jpg" class="d-block" alt="...">
-                        </div>
-                        <div class="carousel-item active">
-                            <img src="./assets/images/converse_1970s_white.jpg" class="d-block" alt="...">
-                        </div>
-                    </div>
-                    <!-- Nút chuyển về trước -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls"
-                        data-bs-slide="prev">
-                        <i class="fa-solid fa-angles-left fa-2xl" style="color: #0f3057;"></i>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <!-- Nút chuyển về sau  -->
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselControls"
-                        data-bs-slide="next">
-                        <i class="fa-solid fa-angles-right fa-2xl" style="color: #0f3057;"></i>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+$sql1 = "select * from (nhasanxuat l inner join danhsach t on t.IdNSX=l.IdNSX)";
+$danhsach2 = $connect->query($sql1);
+$count_kq = mysqli_num_rows($danhsach2);
 
-            </div>
-            <!-- Khung sản phẩm -->
-            <?php
-            $sql = "SELECT * FROM `danhsach` WHERE 1";
-            $danhsach = $connect->query($sql);
-            ?>
-            <?php
-            while ($ds = $danhsach->fetch_array(MYSQLI_ASSOC)) {
-                // Tính giá giảm của sản phẩm
-                $giagiam = $ds['Gia'] - (($ds['TiLeGiam'] / 100) * $ds['Gia']);
-                echo '<div class="col-md-3 mt-2">';
-                echo '  <div id="img-products">';
-                echo '      <img src="' . $ds["AnhSP"] . '"/>';
-                echo '      <h6>' . $ds["TenSP"] . '</h6>';
-                echo '      <div class="price-list">';
-                // Nếu giảm thì hiển thị thông tin của 2 giá
-                if ($ds['Gia'] == $giagiam) {
-                    echo '  <span class="price-sale ">' . number_format($giagiam, 0, ',', '.') . ' đ</span>';
-                } else {
-                    echo '  <span class="price-sale ">' . number_format($giagiam, 0, ',', '.') . ' đ</span>';
-                    echo '  <span class="price">' . number_format($ds['Gia'], 0, ',', '.') . ' đ</span>';
-                }
-                echo '      </div>';
-                echo '      <div class="d-flex justify-content-around pb-3">';
-                echo "          <a title='mua hàng' class='btn btn-outline-success btn-sm me-2'
-                                href='index.php?do=dangnhap'
-                                onclick='return confirm(\"Vui lòng đăng nhập để mua sản phẩm " . $ds["TenSP"] . " này\")'>Buy</a>";
-                echo '          <a class="btn btn-outline-warning btn-sm">Add cart</a>';
-                echo '      </div>';
-                echo '  </div>';
-                echo '</div>';
+
+// Hiện ảnh tự động
+include_once "anh_tudong.php";
+
+?>
+
+<!-- Hiển thị danh sách sản phẩm -->
+<div class="container">
+    <div class="row">
+        <?php
+        while ($ds = $danhsach->fetch_array(MYSQLI_ASSOC)) {
+            // Tính giá giảm của sản phẩm
+            $giagiam = $ds['Gia'] - (($ds['TiLeGiam'] / 100) * $ds['Gia']);
+            echo '<div class="col-md-3 mt-2">';
+            echo '  <div id="img-products">';
+            // Hiển thi hình ảnh
+            echo '<a href="index.php?do=kh_sanpham_chitiet&id=' . $ds['MaSP'] . '&IdNSX=' . $ds['IdNSX'] . '"> <img src="' . $ds["AnhSP"] . '"/></a>';
+            // Hiển thị tỉ lệ giảm 
+            if ($ds['TiLeGiam'] != 0) {
+                echo '<h4 class="badge badge-lg bg-danger m-0">-' . $ds['TiLeGiam'] . '%</h4>';
             }
-            ?>
-
-        </div>
-
+            echo '      <h6>' . $ds["TenSP"] . '</h6>';
+            echo '      <div class="price-list">';
+            // Nếu giảm thì hiển thị thông tin của 2 giá
+            if ($ds['Gia'] == $giagiam) {
+                echo '  <span class="price-sale ">' . number_format($giagiam, 0, ',', '.') . ' đ</span>';
+            } else {
+                echo '  <span class="price-sale ">' . number_format($giagiam, 0, ',', '.') . ' đ</span>';
+                echo '  <span class="price">' . number_format($ds['Gia'], 0, ',', '.') . ' đ</span>';
+            }
+            echo '<div class="d-flex justify-content-end me-3 view"><span> Đã xem ' . $ds['LuotXem'] . '</span></div>';
+            echo '      </div>';
+            echo '  </div>';
+            echo '</div>';
+        }
+        if ($count_kq > $_SESSION['limit_home']) {
+            echo "<div >
+                <a class='btn btn-info mt-3 text-white' href='index.php?do=home_trangtin&limit_home=ok' style='width: 120px; float: right;'>XEM THÊM</a>
+                </div>";
+        }
+        ?>
     </div>
-</body>
+</div>
+</div>
 
-</html>
+</div>
