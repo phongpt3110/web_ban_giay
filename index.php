@@ -36,12 +36,12 @@ include_once "thuvien.php";
             </div>
             <!-- Tạo khung search -->
             <div id="search" class="input-group input-group-m mt-2 ">
-                <from action="" method="POST" class="d-flex flex-grow-1 justify-content-center">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <button class="btn btn-success" name="ok" type="submit">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </from>
+                        <form action="index.php?do=timkiemsanpham" method="POST" class="d-flex flex-grow-1 justify-content-center">
+                <input type="text" class="form-control" placeholder="Search" name="search"> <!-- Đặt tên cho trường input -->
+                <button class="btn btn-success" type="submit" name="ok"> <!-- Đặt tên cho nút submit -->
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
             </div>
             <!-- Tài khoản -->
             <div id="account" class="d-md-flex me-2 mt-2 align-items-center flex-shrink-1">
