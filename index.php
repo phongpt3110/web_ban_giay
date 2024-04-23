@@ -91,25 +91,12 @@ include_once "thuvien.php";
                 </div>
             </div>
             <!--------------------------------- Giỏ hàng ------------------------------------------- -->
-            <div id="cart" class="me-2 mt-2">
-                <!-- Tạo ra menu bên phải của giỏ hàng -->
-                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#demo">
+            <!-- <div id="cart" class="me-2 mt-2">
+                <a href="giohang.php" data-bs-toggle="offcanvas" data-bs-target="#demo">
                     <i class="icon-header fa-solid fa-cart-flatbed"></i>
                     <span class="badge">0</span>
                 </a>
-                <!-- Hiển thị menu giở hàng -->
-                <div class="offcanvas offcanvas-end offcanvas-lg bg-white" id="demo">
-                    <div class="offcanvas-header">
-                        <h1 class="offcanvas-title">GIỎ HÀNG</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <p>Some text lorem ipsum.</p>
-                        <p>Some text lorem ipsum.</p>
-                        <p>Some text lorem ipsum.</p>
-                    </div>
-                </div>
-            </div>
+            </div> -->
         </div>
     </header>
     <!-- Phần giữa trang -->
@@ -119,7 +106,7 @@ include_once "thuvien.php";
             // Nếu chưa đăng nhập or tài khoản khách hàng
             if (!isset($_SESSION['QuyenHan'])) {
                 // Kiểm tra nếu trang chưa đăng nhập
-                echo '<div class="col-md-12">';
+                echo '<div class="col-md-12 mt-4">';
                 $do = isset($_GET["do"]) ? $_GET["do"] : "home_trangtin";
                 if ($do === "dangnhap.php")
                     include "dangnhap.php";
@@ -130,7 +117,7 @@ include_once "thuvien.php";
                 // ------------------ Trang đã đăng nhập quyền admin---------------------------------
                 if ($_SESSION['QuyenHan'] == 0) {
                     // Hiển thị cột trái
-                    echo '<div class="col-md-12 mb-3">';
+                    echo '<div class="col-md-12 mb-4">';
                     echo '<nav class="nav-method">
                             <ul class="nav nav-list d-flex">
                             <!--<h4 class=" bg_primary text-white py-1 px-2 m-0">CÁ NHÂN</h4>-->';
@@ -190,11 +177,18 @@ include_once "thuvien.php";
                 else {
                     echo '<div class="container">
                                 <div class="row">';
-                    // Hiển thị hồ sơ/ đổi mật khẩu người dùng khách hàng
-                    echo '<div class=" mt-3 col-md-12 ">
-                            <ul class="nav flex-row nav-list">
-                                // <h4 class=" bg_primary text-white py-1 px-2 m-0">CÁ NHÂN</h4>
-                                <li class="nav-item">
+                    echo '<div class="col-md-12 mb-4">';
+                    echo '<nav class="nav-method">
+                            <ul class="nav nav-list">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="index.php">
+                                        <span>
+                                            <i class="icon-nav fa-solid fa-house-chimney" style="color: #cc041a;"></i>
+                                            TRANG CHỦ
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item ">
                                     <a class="nav-link" href="index.php?do=nguoidung_hoso">
                                         <span>
                                             <i class="icon-nav fa-solid fa-address-card"></i>
@@ -202,7 +196,7 @@ include_once "thuvien.php";
                                         </span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item ">
                                     <a class="nav-link" href="index.php?do=doimatkhau">
                                         <span>
                                             <i class="icon-nav fa-solid fa-pen"></i>
@@ -210,7 +204,28 @@ include_once "thuvien.php";
                                         </span>
                                     </a>
                                 </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link cart" href="index.php?do=giohang">
+                                        <span>
+                                            <i class="icon-nav fa-solid fa-pen"></i>
+                                            <span class="badge bg-danger rounded-0">';
+                    $MaNguoiDung = $_SESSION['MaNguoiDung'];
+                    $sql = "SELECT * FROM `giohang` WHERE MaNguoiDung = '$MaNguoiDung'";
+                    $ds = $connect->query($sql);
+                    if (!$ds) {
+                        die('Không thể kết nối');
+                    } else {
+                        $num = mysqli_num_rows($ds);
+                        echo $num;
+                    }
+
+                    echo '</span>
+                                            GIỎ HÀNG
+                                        </span>
+                                    </a>
+                                </li>
                             </ul>';
+                    echo '</nav>';
                     echo '</div>';
                     echo '</div> ';
                     echo '</div>';

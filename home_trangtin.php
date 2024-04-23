@@ -65,6 +65,3 @@ include_once "anh_tudong.php";
         ?>
     </div>
 </div>
-</div>
-
-</div>

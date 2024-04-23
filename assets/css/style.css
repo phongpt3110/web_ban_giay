@@ -50,15 +50,15 @@ body {
   /* Đặt hiệu ứng  */
   transition: transform 0.3s ease;
 }
-/* Giỏ hàng  */
-#cart {
+/* ----------------------- Giỏ ------------------- hàng  */
+.cart {
   position: relative;
 }
 
-#cart .badge {
+.cart .badge {
   position: absolute;
-  top: -10px;
-  right: -14px;
+  top: 0px;
+  right: -12px;
   color: #fff;
   background-color: var(--color-danger);
 }

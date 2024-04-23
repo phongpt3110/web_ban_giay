@@ -32,6 +32,7 @@ else {
 			$_SESSION['MaNguoiDung'] = $dong['MaNguoiDung'];
 			$_SESSION['HoTen'] = $dong['TenNguoiDung'];
 			$_SESSION['QuyenHan'] = $dong['QuyenHan'];
+			$_SESSION['DiaChi'] = $dong['DiaChi'];
 
 			// header('Location: index.php');
 			echo '<script>

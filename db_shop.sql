@@ -63,7 +63,7 @@ VALUES
 --
 CREATE TABLE
     `giohang` (
-        `MaGio` int (11) NOT NULL,
+        `MaGio` int (11) NOT NULL AUTO_INCREMENT,
         `MaNguoiDung` int (11) NOT NULL,
         `MaSP` int (11) DEFAULT NULL,
         `TenSP` text COLLATE utf8_unicode_ci,
@@ -71,7 +71,7 @@ CREATE TABLE
         `Gia` int (11) DEFAULT NULL,
         `AnhSP` text COLLATE utf8_unicode_ci,
         PRIMARY KEY (`MaGio`)
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci;
+    ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COLLATE = utf8_unicode_ci AUTO_INCREMENT = 3;
 
 --
 -- Dumping data for table `giohang`
