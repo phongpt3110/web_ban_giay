@@ -43,9 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     SET 
                     `TenNguoiDung` = '$TenNguoiDung',
                     `TenDangNhap` = '$TenDangNhap',
-                    `DiaChi` = '$DiaChi'
-                    `Email` = '$Email',
+                    `DiaChi` = '$DiaChi',
+                    `Email` = '$Email'
                     WHERE `MaNguoiDung` = '$MaNguoiDung'";
+        echo $sql;
 
         $ds = $connect->query($sql);
         if (!$ds) {

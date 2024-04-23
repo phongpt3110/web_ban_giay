@@ -1,53 +1,50 @@
 <?php
-    
-    // Xử lý khi có tham số 'ok' được gửi đến server
-    if(isset($_REQUEST['ok']))
-    {
-        if (isset($_GET["limit_home"]) == true)
-            $_SESSION['limit_home'] += 4;
-        else
-            $_SESSION['limit_home'] = 8;
-        
-        $limit_home_ok = $_SESSION['limit_home'];
-         
-        $search = addslashes($_POST['search']);
-        $sql = "SELECT * FROM danhsach WHERE TenSP LIKE '%$search%' OR MoTa LIKE '%$search%'";
 
-        // thực thi câu truy vấn 
-        $danhsach = $connect-> query($sql);
-        // Nếu kết quả kết nối không được thì xuất báo lỗi và thoát
-        if(!$danhsach)
-        {
-            die("Không thể thực hiện câu lệnh SQL: " . $connect->connect_error);
-            exit();
-        }
-         //Đếm số dòng trả về trong sql
-        $num = mysqli_num_rows($danhsach);
-        $sql1 = "select * from (nhasanxuat l inner join danhsach t on t.IdNSX=l.IdNSX)";
-        $danhsach2 = $connect->query($sql1);
-        $count_kq = mysqli_num_rows($danhsach2);
+// Xử lý khi có tham số 'ok' được gửi đến server
+if (isset($_REQUEST['ok'])) {
+    if (isset($_GET["limit_home"]) == true)
+        $_SESSION['limit_home'] += 4;
+    else
+        $_SESSION['limit_home'] = 8;
 
-         // Nếu $search rỗng thì báo lỗi, empty  kiểm tra có rỗng ko
-        if(empty($search))
-        {
-            echo "Hãy nhập dữ liệu vào ô tìm kiếm";
-        }
-        else
-        {
-           // Ngược lại nếu nhập vào thì tiến hành xử lí
-           //Giá trị num > 0 hoặc $search phải khác rỗng, tìm kiếm thì sẽ show ra màn hình hoặc thông báo lỗi 
-           if($num > 0 && $search !="")
-           {
-                // Dùng $num để đếm số dòng trả về.
-                echo "<h3>$num kết quả trả về với từ khóa <b>$search</b> <br /></h3>";
+    $limit_home_ok = $_SESSION['limit_home'];
 
-                // Hiện ảnh tự động
-                include_once "anh_tudong.php";
+    $search = addslashes($_POST['search']);
+    $sql = "SELECT * FROM danhsach WHERE TenSP LIKE '%$search%' OR MoTa LIKE '%$search%'";
 
-                echo '<div class="container">
+    // thực thi câu truy vấn 
+    $danhsach = $connect->query($sql);
+    // Nếu kết quả kết nối không được thì xuất báo lỗi và thoát
+    if (!$danhsach) {
+        die("Không thể thực hiện câu lệnh SQL: " . $connect->connect_error);
+        exit();
+    }
+    //Đếm số dòng trả về trong sql
+    $num = mysqli_num_rows($danhsach);
+
+    // Lấy số lượng sản phẩm 
+    $sql1 = "select * from (nhasanxuat l inner join danhsach t on t.IdNSX=l.IdNSX)";
+    $danhsach2 = $connect->query($sql1);
+    $count_kq = mysqli_num_rows($danhsach2);
+
+    // Nếu $search rỗng thì báo lỗi, empty  kiểm tra có rỗng ko
+    if (empty($search)) {
+        //Thông báo lỗi
+        AlertMess("Bạn đã không nhập thông tin");
+    } else {
+        // Ngược lại nếu nhập vào thì tiến hành xử lí
+        //Giá trị num > 0 hoặc $search phải khác rỗng, tìm kiếm thì sẽ show ra màn hình hoặc thông báo lỗi 
+        if ($num > 0 && $search != "") {
+            // Dùng $num để đếm số dòng trả về.
+            // echo "<h3>$num kết quả trả về với từ khóa <b>$search</b> <br /></h3>";
+
+            // Hiện ảnh tự động
+            include_once "anh_tudong.php";
+
+            echo '<div class="container">
                     <div class="row">';
-        
-                while ($ds = $danhsach->fetch_array(MYSQLI_ASSOC)) {
+
+            while ($ds = $danhsach->fetch_array(MYSQLI_ASSOC)) {
                 // Tính giá giảm của sản phẩm
                 $giagiam = $ds['Gia'] - (($ds['TiLeGiam'] / 100) * $ds['Gia']);
                 echo '<div class="col-md-3 mt-2">';
@@ -78,15 +75,15 @@
                     </div>";
             }
 
-            echo' </div>
+            echo ' </div>
                 </div>';
-            }
-            else {
-                echo "Không tìm thấy kết quả!";
-           }
 
+        } else {
+            AlertMess("Không tìm thấy sản phẩm bạn đã tìm kiếm !!");
         }
-            
+
     }
-          	
+
+}
+
 ?>
