@@ -1,6 +1,7 @@
 <?php
 $MaSP = $_GET['id'];
 
+
 $sql = "SELECT * FROM danhsach ds, nhasanxuat nsx
             WHERE ds.IdNSX = nsx.IdNSX AND ds.MaSP = '$MaSP'";
 
@@ -53,12 +54,25 @@ include "anh_tudong.php";
             <p>Mô tả:</p>
             <p class="describe"><?php echo $dong['MoTa']; ?></p>
             <hr>
-            <div class="d-flex justify-content-evenly">
-                <button class="btn btn-success">MUA NGAY</button>
-                <button class="btn btn-warning">THÊM VÀO GIỎ HÀNG</button>
-            </div>
+            <!-- Mua sản phẩm -->
+            <form method="post" action="index.php?do=mua_sanpham">
+                <div class="mb-3 d-flex  align-items-center">
+                    <label for="quantity" class="form-label me-5">Số lượng:</label>
+                    <input style="width:50%;" type="number" id="quantity" class="form-control" name="SoLuongMua" min="1"
+                        value="1" step="1" max="<?php echo $dong['SoLuong']; ?>" />
+                </div>
+                <input type="hidden" name="MaSP" value="<?php echo $dong['MaSP']; ?>">
+                <input type="hidden" name="TenSP" value="<?php echo $dong['TenSP']; ?>">
+                <input type="hidden" name="SoLuong" value="<?php echo $dong['SoLuong']; ?>">
+                <input type="hidden" name="Gia" value="<?php echo $dong['Gia']; ?>">
+                <input type="hidden" name="TiLeGiam" value="<?php echo $dong['TiLeGiam']; ?>">
+                <input type="hidden" name="AnhSP" value="<?php echo $dong['AnhSP']; ?>">
+                <button type="submit" class="btn btn-success rounded-0 w-40" name="action" value="mua">
+                    MUA NGAY</button>
+                <button type="submit" class="btn btn-warning rounded-0 float-end" name="action" value="themgiohang">
+                    THÊM VÀO GIỎ HÀNG</button>
+            </form>
         </div>
-
     </div>
 </div>
 <?php

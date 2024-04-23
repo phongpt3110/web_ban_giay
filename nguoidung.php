@@ -19,8 +19,9 @@ if (!$ds) {
                         <tr>
                             <th class='col-1'>MÃ</th>
                             <th class='col-2'>HỌ VÀ TÊN</th>
-                            <th class='col-2'>TÊN ĐĂNG NHẬP</th>
-                            <th class='col-3'>ĐỊA CHỈ</th>
+                            <th class='col-1'>TÊN ĐĂNG NHẬP</th>
+                            <th class='col-2'>EMAIL</th>
+                            <th class='col-2'>ĐỊA CHỈ</th>
                             <th class='col-2'>QUYỀN</th>
                             <th class='col-2' colspan="3">HÀNH ĐỘNG</th>
                         </tr>
@@ -32,6 +33,7 @@ if (!$ds) {
                             echo "<td>" . $dong['MaNguoiDung'] . "</td>";
                             echo "<td style='text-align: left;'>" . $dong['TenNguoiDung'] . "</td>";
                             echo "<td style='text-align: left;'>" . $dong['TenDangNhap'] . "</td>";
+                            echo "<td style='text-align: left;'>" . $dong['Email'] . "</td>";
                             echo "<td style='text-align: left;'>" . $dong['DiaChi'] . "</td>";
 
                             // Quyền

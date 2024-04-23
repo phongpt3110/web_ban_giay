@@ -11,6 +11,8 @@ $DiaChi = $_POST['DiaChi'];
 // Kiểm tra
 if (trim($HoVaTen) == "")
 	ThongBao("Họ và tên không được bỏ trống!");
+elseif (trim($Email) == "" || !filter_var($Email, FILTER_VALIDATE_EMAIL))
+	ThongBao("Email không được bỏ trống và không đúng định dạng!");
 elseif (trim($TenDangNhap) == "")
 	ThongBao("Tên đăng nhập không được bỏ trống!");
 elseif (trim($MatKhau) == "")

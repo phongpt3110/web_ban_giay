@@ -14,6 +14,7 @@ if (!$ds) {
 
 // Lặp qua các cột
 $dong = $ds->fetch_array(MYSQLI_ASSOC);
+
 ?>
 
 <!-- Xử lý from  -->
@@ -25,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $TenNguoiDung = $_POST['TenNguoiDung'];
     $TenDangNhap = $_POST['TenDangNhap'];
     $DiaChi = $_POST['DiaChi'];
+    $Email = $_POST['Email'];
 
 
     if (trim($TenNguoiDung) == "")
@@ -33,6 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         BaoLoi("Bạn chưa nhập tên đăng nhập!!!");
     elseif (trim($DiaChi) == "")
         BaoLoi("Bạn chưa nhập địa chỉ!!!");
+    elseif (trim($Email) == "" || !filter_var($Email, FILTER_VALIDATE_EMAIL))
+        BaoLoi("Email không được bỏ trống");
     else {
         // Câu lệnh cập nhật
         $sql = "UPDATE `nguoidung`
@@ -40,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     `TenNguoiDung` = '$TenNguoiDung',
                     `TenDangNhap` = '$TenDangNhap',
                     `DiaChi` = '$DiaChi'
+                    `Email` = '$Email',
                     WHERE `MaNguoiDung` = '$MaNguoiDung'";
 
         $ds = $connect->query($sql);
@@ -47,9 +52,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Không thể thực hiện câu lệnh Update: " . $connect->connect_error);
         } else {
             ThongBao("Bạn đã cập nhật thành công người dùng $TenNguoiDung");
-            echo '<script>
-                    window.location.href = "index.php?do=nguoidung";
-                </script>';
+
+            // Nếu khách hàng thì quay lại trang hồ sơ
+            if ($_SESSION['QuyenHan'] == 0) {
+                echo '<script>
+                        window.location.href = "index.php?do=nguoidung";
+                    </script>';
+            } else {
+                echo '<script>
+                        window.location.href = "index.php?do=nguoidung_hoso";
+                    </script>';
+            }
         }
     }
 }
@@ -72,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="hidden" name="MaNguoiDung" value="<?php echo $dong['MaNguoiDung']; ?>" />
                         <!-- Cập nhật tên người dùng -->
                         <div class="form-floating mb-3 ">
-                            <input type="text" class="form-control" id="tnd" name="TenNguoiDung" required
+                            <input type="text" class="form-control" id="tnd" name="TenNguoiDung"
                                 value="<?php echo $dong['TenNguoiDung']; ?>">
                             <label for="tnd">TÊN NGƯỜI DÙNG</label>
                         </div>
@@ -89,6 +102,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label for="mk">MẬT KHẨU</label>
                         </div>
                         <!-- Cập nhật địa chỉ -->
+                        <div class="form-floating mb-3 ">
+                            <input type="text" class="form-control" id="em" name="Email" required
+                                value="<?php echo $dong["Email"] ?>">
+                            <label for="em">EMAIL</label>
+                        </div>
                         <div class="form-floating mb-3 ">
                             <input type="text" class="form-control" id="dc" name="DiaChi" required
                                 value="<?php echo $dong["DiaChi"] ?>">
