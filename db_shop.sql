@@ -103,11 +103,11 @@ CREATE TABLE
 -- Dumping data for table `nguoidung`
 --
 INSERT INTO
-    `nguoidung` (`MaNguoiDung`, `QuyenHan`, `TenNguoiDung`, `TenDangNhap`, `MatKhau`, `DiaChi`, `Khoa`)
+    `nguoidung` (`MaNguoiDung`, `QuyenHan`, `TenNguoiDung`, `TenDangNhap`, `MatKhau`, `DiaChi`, `Khoa`,`Email`)
 VALUES
-    (1, 0, 'Thành Phong', 'phong', MD5 ('phong'), 'An Giang', 0),
-    (2, 0, 'Phước Tuy', 'tuy', MD5 ('tuy'), 'An Giang', 0),
-    (3, 1, 'Client', 'client', MD5 ('client'), 'Cần Thơ', 0);
+    (1, 0, 'Thành Phong', 'phong', MD5 ('phong'), 'An Giang', 0, 'ptp3110@gmail.com'),
+    (2, 0, 'Phước Tuy', 'tuy', MD5 ('tuy'), 'An Giang', 0, 'phuoctuy@gmail.com'),
+    (3, 1, 'Client', 'client', MD5 ('client'), 'Cần Thơ', 0,'client.@gmail.com');
 
 CREATE TABLE
     `nhasanxuat` (
