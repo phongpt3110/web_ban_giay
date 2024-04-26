@@ -1,6 +1,4 @@
 <?php
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $MaNguoiDung = $_POST['MaNguoiDung'];
     $SanPhamXoa = $_POST['SanPhamXoa'];
@@ -46,7 +44,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-
-
-
 ?>

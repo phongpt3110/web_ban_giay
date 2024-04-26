@@ -12,10 +12,10 @@ $limit_ok = $_SESSION['limit'];
 // Lấy id nhà sản xuất
 $IdNSX = $_GET["IdNSX"];
 
-// Lấy dữ liệu SQL nhà sản xuất
-$sql = "select * from `nhasanxuat` where IdNSX ='" . $IdNSX . "'";
-$danhsach = $connect->query($sql);
-$row = $danhsach->fetch_array(MYSQLI_ASSOC);
+// // Lấy dữ liệu SQL nhà sản xuất
+// $sql = "select * from `nhasanxuat` where IdNSX ='" . $IdNSX . "'";
+// $danhsach = $connect->query($sql);
+// $row = $danhsach->fetch_assoc();
 
 // Lấy danh sách 
 $sql1 = "select * from `danhsach` where IdNSX ='" . $IdNSX . "' ORDER by `MaSP` DESC LIMIT 0, " . $limit_ok;
@@ -45,7 +45,7 @@ while ($ds = $danhsach1->fetch_array(MYSQLI_ASSOC)) {
     $giagiam = $ds['Gia'] - (($ds['TiLeGiam'] / 100) * $ds['Gia']);
     echo '<div class="col-md-3 mt-2">';
     echo '  <div id="img-products">';
-    echo '<a href="index.php?do=kh_sanpham_chitiet&id=' . $ds['MaSP'] . '&IdNSX=' . $ds['IdNSX'] . '"> <img src="' . $ds["AnhSP"] . '"/></a>';
+    echo '<a href="index.php?do=kh_sanpham_chitiet&id=' . $ds['MaSP'] . '&IdNSX=' . $IdNSX . '"> <img src="' . $ds["AnhSP"] . '"/></a>';
     // Hiển thị tỉ lệ giảm 
     if ($ds['TiLeGiam'] != 0) {
         echo '<h4 class="badge badge-lg bg-danger m-0">-' . $ds['TiLeGiam'] . '%</h4>';
@@ -69,7 +69,8 @@ echo '</div>';
 
 if ($count_sp_nsx > $_SESSION['limit']) {
     echo "<div >
-        <a class='btn btn-info mt-3 text-white' href='index.php?do=kh_sanpham_NSX&IdNSX=' " . $row['IdNSX'] . " style='width: 120px; float: right;'>XEM THÊM " . $row['TenNSX'] . " </a>
+        <a class='btn btn-info mt-3 text-white' href='index.php?do=kh_sanpham_NSX&IdNSX=" . $IdNSX . "&limit=ok' style='width: 120px; float: right;'>XEM THÊM  </a>
         </div>";
 }
+
 ?>
